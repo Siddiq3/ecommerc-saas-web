@@ -5,7 +5,7 @@ import { callBackend, toRouteError, SESSION_COOKIE } from '../../../../lib/backe
 import { readJson } from '../../../../lib/validate.js';
 
 /**
- * Creates the Razorpay subscription or order that checkout will open.
+ * Creates the Cashfree order that checkout will open.
  *
  * The plan and cycle are the only things the browser gets to choose. The amount is
  * decided server-side from the plan catalogue, so a tampered request cannot buy a Pro
@@ -29,7 +29,7 @@ export async function POST(request) {
     const data = await callBackend('/billing/checkout', {
       method: 'POST',
       sessionToken,
-      // A retried tap must not create a second subscription in Razorpay.
+      // A retried tap must not create a second order in Cashfree.
       idempotencyKey: `checkout-${randomUUID().replace(/-/g, '')}`,
       body: selection,
     });

@@ -16,8 +16,10 @@ coverage/
 .aws/
 secrets/
 
-# Product images MUST NOT live in git (PRD §5 / spec §39)
-uploads/
+# Product images MUST NOT live in git (PRD §5 / spec §39).
+# Anchored: an unanchored `uploads/` also matches source directories such as
+# src/modules/uploads/, which silently dropped that module from the first commit.
+/uploads/
 public/uploads/
 *.webp.local
 

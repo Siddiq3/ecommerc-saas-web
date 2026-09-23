@@ -26,19 +26,20 @@ const nextConfig = {
           { key: 'Permissions-Policy', value: 'geolocation=(), microphone=(), camera=()' },
           {
             /**
-             * Razorpay Checkout is loaded from their CDN and opens its own iframe, so its
-             * origins are allowed explicitly rather than by loosening the policy. Nothing
-             * else third-party is permitted.
+             * The Cashfree checkout SDK is loaded from their CDN and opens its own iframe,
+             * so its origins are allowed explicitly rather than by loosening the policy.
+             * Both the production and sandbox hosts are listed because the environment is
+             * chosen per deployment. Nothing else third-party is permitted.
              */
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' https://checkout.razorpay.com https://*.razorpay.com",
+              "script-src 'self' 'unsafe-inline' https://sdk.cashfree.com",
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: blob: https:",
               "font-src 'self' data:",
-              "connect-src 'self' https://*.razorpay.com https://lumberjack.razorpay.com",
-              "frame-src https://api.razorpay.com https://*.razorpay.com",
+              "connect-src 'self' https://api.cashfree.com https://sandbox.cashfree.com https://*.cashfree.com",
+              "frame-src https://payments.cashfree.com https://sandbox.cashfree.com https://*.cashfree.com",
               "frame-ancestors 'none'",
               "base-uri 'self'",
               "form-action 'self'",
@@ -47,9 +48,14 @@ const nextConfig = {
         ],
       },
       {
-        // The billing page carries account context; it must never be cached anywhere.
+        // The billing page carries account context; it must never be cached anywhere. Its
+        // URL holds the one-time handoff code until the client clears it, so it also
+        // sends no Referer at all.
         source: '/billing',
-        headers: [{ key: 'Cache-Control', value: 'no-store, must-revalidate' }],
+        headers: [
+          { key: 'Cache-Control', value: 'no-store, must-revalidate' },
+          { key: 'Referrer-Policy', value: 'no-referrer' },
+        ],
       },
     ];
   },

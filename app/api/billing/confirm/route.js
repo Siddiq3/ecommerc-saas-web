@@ -5,9 +5,9 @@ import { callBackend, toRouteError, SESSION_COOKIE } from '../../../../lib/backe
 import { readJson } from '../../../../lib/validate.js';
 
 /**
- * Hands Razorpay's checkout response to the backend, which verifies the signature before
+ * Hands the finished order to the backend, which asks Cashfree whether it was paid before
  * granting anything. The browser is not trusted to declare a payment successful; it only
- * relays what the provider signed.
+ * names the order to look at.
  */
 export async function POST(request) {
   try {
@@ -21,16 +21,16 @@ export async function POST(request) {
     }
 
     /*
-     * Validated before anything is used. The payment id is interpolated into the
-     * idempotency header below, so it has to be known to be a Razorpay id — an
-     * unvalidated value there is a header the browser gets to write.
+     * Validated before anything is used. The order id is interpolated into the
+     * idempotency header below, so it has to be known to match the shape this system
+     * mints — an unvalidated value there is a header the browser gets to write.
      */
     const payload = await readJson(request, confirmCheckoutSchema);
 
     const data = await callBackend('/billing/confirm', {
       method: 'POST',
       sessionToken,
-      idempotencyKey: `confirm-${payload.razorpay_payment_id ?? randomUUID()}`,
+      idempotencyKey: `confirm-${payload.order_id ?? randomUUID()}`,
       body: payload,
     });
 

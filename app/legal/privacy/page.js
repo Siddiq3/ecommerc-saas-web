@@ -16,9 +16,9 @@ export default function PrivacyPage() {
           number, so you can fulfil the order.
         </p>
         <p>
-          To bill your subscription: your email and store name are passed to Razorpay to process
-          payment. We do not see or store your card or UPI details — Razorpay handles that
-          directly.
+          To bill your plan: your email, store name and contact phone number are passed to
+          Cashfree to process the payment. We do not see or store your card or UPI details —
+          Cashfree handles that directly.
         </p>
       </LegalSection>
 
@@ -33,7 +33,7 @@ export default function PrivacyPage() {
 
       <LegalSection title="Who we share it with">
         <p>
-          Razorpay, to process subscription payments. We do not sell your data or your
+          Cashfree, to process plan payments. We do not sell your data or your
           customers&rsquo; data, and do not share it with anyone else except where required by
           law.
         </p>

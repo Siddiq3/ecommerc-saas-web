@@ -23,8 +23,9 @@ export default function TermsPage() {
         <p>
           Every store starts with a {TRIAL_DAYS}-day free trial. No payment details are collected
           to start it. If you choose to continue after the trial, you pick a paid plan and pay
-          through Razorpay, billed monthly or yearly, on auto-renew or as a one-time payment for
-          the period.
+          through Cashfree for a month or a year at a time. Each payment buys that one period:
+          nothing renews automatically and nothing is auto-debited, so you pay again when you
+          want to carry on.
         </p>
         <p>
           You can cancel at any time from this site. Your store and its data stay live and

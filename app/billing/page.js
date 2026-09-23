@@ -6,6 +6,9 @@ export const metadata = {
   title: 'Billing',
   // This page carries account context and must never be indexed or cached.
   robots: { index: false, follow: false, nocache: true },
+  // The one-time code is in this page's URL until the client script clears it. No
+  // referrer means nothing this page loads or links to is ever told that URL.
+  referrer: 'no-referrer',
 };
 
 export const dynamic = 'force-dynamic';

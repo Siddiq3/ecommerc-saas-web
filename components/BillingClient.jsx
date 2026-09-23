@@ -7,8 +7,8 @@ import {
   priceFor, effectiveMonthlyPrice, yearlySavingPercent, formatMoney,
 } from '@storekit/shared';
 import { Logo } from './Logo.jsx';
-import { compactJwt, confirmCheckoutSchema, planSelectionSchema } from '@storekit/validation';
-import { openCheckout } from '../lib/razorpay.js';
+import { handoffCode, confirmCheckoutSchema, planSelectionSchema } from '@storekit/validation';
+import { openCheckout } from '../lib/cashfree.js';
 
 const Check = () => (
   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="mt-0.5 shrink-0 text-accent-600">
@@ -45,8 +45,10 @@ const Notice = ({ tone = 'error', title, children, action }) => {
  * The billing page.
  *
  * It is reached only from the app, which opens it in the device's real browser with a
- * single-use token in the URL. That token is exchanged for an httpOnly session cookie
- * and then wiped from the address bar, so it cannot be re-shared from browser history.
+ * single-use, opaque code in the URL. That code is exchanged for an httpOnly session
+ * cookie and wiped from the address bar, so it cannot be re-shared from browser history.
+ * It is not a login credential and carries no identity: it is a lookup key the server
+ * spends on first use.
  */
 export function BillingClient({ deepLink }) {
   const router = useRouter();
@@ -55,38 +57,38 @@ export function BillingClient({ deepLink }) {
   const [status, setStatus] = useState(null);
   const [cycle, setCycle] = useState('monthly');
   const [selected, setSelected] = useState('growth');
-  const [mode, setMode] = useState('subscription');
   const [error, setError] = useState(null);
   const [busy, setBusy] = useState(false);
   const exchanged = useRef(false);
 
-  /* ── Token exchange, once per page load ── */
+  /* ── Code exchange, once per page load ── */
   useEffect(() => {
     if (exchanged.current) return;
     exchanged.current = true;
 
     const params = new URLSearchParams(window.location.search);
-    // The URL is attacker-controllable, so the token is checked against the shape the app
-    // was issued before it is sent anywhere. A malformed one is treated as no token.
-    const tokenParam = compactJwt.safeParse(params.get('token') ?? '');
-    const token = tokenParam.success ? tokenParam.data : null;
+    // The URL is attacker-controllable, so the code is checked against the shape the API
+    // mints before it is sent anywhere. A malformed one is treated as no code.
+    const codeParam = handoffCode.safeParse(params.get('code') ?? '');
+    const code = codeParam.success ? codeParam.data : null;
     const view = params.get('view') === 'manage' ? 'manage' : null;
 
-    // Clear the token from the URL before anything else can read or persist it.
-    if (token) {
+    // Clear the code from the URL before anything else can read or persist it — whether or
+    // not it was well formed, since a malformed one is still not something to keep around.
+    if (params.has('code')) {
       const clean = new URL(window.location.href);
-      clean.searchParams.delete('token');
+      clean.searchParams.delete('code');
       window.history.replaceState({}, '', clean.pathname + (clean.search || ''));
     }
 
     const start = async () => {
-      // No token: the customer may already hold a valid session cookie from earlier.
-      const endpoint = token ? '/api/billing/session' : '/api/billing/status';
+      // No code: the customer may already hold a valid session cookie from earlier.
+      const endpoint = code ? '/api/billing/session' : '/api/billing/status';
       try {
         const response = await fetch(endpoint, {
-          method: token ? 'POST' : 'GET',
-          headers: token ? { 'Content-Type': 'application/json' } : undefined,
-          body: token ? JSON.stringify({ token }) : undefined,
+          method: code ? 'POST' : 'GET',
+          headers: code ? { 'Content-Type': 'application/json' } : undefined,
+          body: code ? JSON.stringify({ code }) : undefined,
         });
         const payload = await response.json();
 
@@ -96,7 +98,7 @@ export function BillingClient({ deepLink }) {
           return;
         }
 
-        if (token) {
+        if (code) {
           setAccount(payload.data.account);
           setStatus(payload.data.status);
         } else {
@@ -123,7 +125,7 @@ export function BillingClient({ deepLink }) {
     try {
       // Validated in the browser with the same schema the route and the API apply, so a
       // corrupted selection never becomes a request at all.
-      const selection = planSelectionSchema.safeParse({ planId: selected, cycle, mode });
+      const selection = planSelectionSchema.safeParse({ planId: selected, cycle });
       if (!selection.success) {
         setError({ code: 'VALIDATION_ERROR', message: selection.error.issues[0].message });
         setBusy(false);
@@ -143,25 +145,24 @@ export function BillingClient({ deepLink }) {
         return;
       }
 
-      const result = await openCheckout(payload.data, {
-        storeName: account?.storeName,
-        email: account?.email,
-        onDismiss: () => setBusy(false),
-      });
+      const result = await openCheckout(payload.data);
 
       // Customer closed the sheet without paying. Nothing to report.
-      if (!result) return;
+      if (!result) {
+        setBusy(false);
+        return;
+      }
 
       /*
-       * Razorpay's response is third-party input. It is checked against the expected id
-       * and signature formats before being relayed — if the sheet returns something
-       * unexpected, that is worth surfacing rather than forwarding blindly.
+       * Only the order id is relayed, and it is checked against the shape this system
+       * mints. Whether that order was paid is decided by the backend asking Cashfree —
+       * nothing the browser says here can grant a plan.
        */
       const checkoutResult = confirmCheckoutSchema.safeParse(result);
       if (!checkoutResult.success) {
         setError({
           code: 'VALIDATION_ERROR',
-          message: 'The payment response could not be read. If money has left your account, contact support with your payment id.',
+          message: 'The payment response could not be read. If money has left your account, contact support with your order id.',
         });
         setBusy(false);
         return;
@@ -179,6 +180,22 @@ export function BillingClient({ deepLink }) {
           code: confirmed.error?.code,
           message:
             'Your payment went through but we could not confirm it here. It will update shortly. Contact us if it does not.',
+        });
+        setBusy(false);
+        return;
+      }
+
+      /*
+       * Cashfree has not marked the order paid. That is the normal answer for a payment
+       * that is still settling — a bank page finished a moment ago, or the method is a
+       * slow one — so it is not framed as a failure, and the webhook will land shortly.
+       */
+      if (confirmed.data?.paid === false) {
+        setError({
+          tone: 'info',
+          code: 'PAYMENT_PENDING',
+          message:
+            'We have not seen that payment complete yet. If it was charged, your plan will update within a few minutes.',
         });
         setBusy(false);
         return;
@@ -286,7 +303,7 @@ export function BillingClient({ deepLink }) {
 
       {error && (
         <div className="mt-6">
-          <Notice title={error.message} />
+          <Notice tone={error.tone ?? 'error'} title={error.message} />
         </div>
       )}
 
@@ -403,52 +420,12 @@ export function BillingClient({ deepLink }) {
           })}
         </div>
 
-        {/* Payment method. The one-time path exists because eMandate is blocked by some
-            Indian banks, and recurring-only would lock those merchants out entirely. */}
-        <fieldset className="mt-8">
-          <legend className="text-sm font-semibold text-ink-900">How would you like to pay?</legend>
-          <div className="mt-3 grid gap-3 sm:grid-cols-2">
-            {[
-              {
-                value: 'subscription',
-                title: 'Auto-renew',
-                body: 'Renews automatically. Cancel any time.',
-              },
-              {
-                value: 'one_time',
-                title: 'Pay once',
-                body: 'One payment for one period. Use this if auto-pay is blocked by your bank.',
-              },
-            ].map((option) => (
-              <label
-                key={option.value}
-                className={`card flex cursor-pointer gap-3 p-4 ${
-                  mode === option.value ? 'ring-2 ring-accent-600' : ''
-                }`}
-              >
-                <input
-                  type="radio"
-                  name="mode"
-                  value={option.value}
-                  checked={mode === option.value}
-                  onChange={() => setMode(option.value)}
-                  className="mt-1 accent-accent-600"
-                />
-                <span>
-                  <span className="block font-medium text-ink-900">{option.title}</span>
-                  <span className="mt-0.5 block text-sm text-ink-600">{option.body}</span>
-                </span>
-              </label>
-            ))}
-          </div>
-        </fieldset>
-
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
           <button type="button" onClick={startCheckout} disabled={busy} className="btn-primary px-8 py-3.5 text-base">
             {busy ? 'Opening payment…' : `Pay ${formatMoney(priceFor(selected, cycle))}`}
           </button>
           <p className="text-sm text-ink-500">
-            Secure payment by Razorpay. {TRIAL_DAYS}-day trial applies before your first charge.
+            Secure payment by Cashfree. {TRIAL_DAYS}-day trial applies before your first charge.
           </p>
         </div>
 

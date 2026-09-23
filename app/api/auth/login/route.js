@@ -10,7 +10,7 @@ import { readJson } from '../../../../lib/validate.js';
  * rather than tapping "Upgrade" inside the app.
  *
  * This does not mint a second kind of session. It performs the same handoff the app
- * performs — sign in, ask the API for a one-time billing handoff token, redeem it — all
+ * performs — sign in, ask the API for a one-time billing handoff code, redeem it — all
  * server-side in one request, so the browser only ever receives the narrow, httpOnly
  * billing-session cookie. The full product access and refresh tokens never reach the
  * browser at all, which is a smaller blast radius than a token kept in sessionStorage.
@@ -39,9 +39,9 @@ export async function POST(request) {
     }
 
     const handoff = await callBackend('/me/billing/handoff', { method: 'POST', sessionToken: accessToken, clientIp });
-    const handoffToken = new URL(handoff.url).searchParams.get('token');
+    const code = new URL(handoff.url).searchParams.get('code');
 
-    const session = await callBackend('/billing/session', { method: 'POST', body: { token: handoffToken }, clientIp });
+    const session = await callBackend('/billing/session', { method: 'POST', body: { code }, clientIp });
 
     const jar = await cookies();
     jar.set(SESSION_COOKIE, session.session.token, sessionCookieOptions(session.session.expiresInSeconds));
