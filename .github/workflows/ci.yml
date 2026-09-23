@@ -1,0 +1,48 @@
+name: CI
+
+# This repository is the storefront and owner dashboard, so every push and pull request
+# runs the whole suite — there is no sibling project to filter paths against.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Lint and build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      # ci, not install: builds exactly the lockfile, so CI cannot silently test a
+      # different dependency tree than the one that ships. Run from the repository root,
+      # which is the workspace root for the @storekit/shared and @storekit/validation
+      # packages this app imports.
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      # A build failure is a broken deploy, so it gates the branch too. The API base URL
+      # is only read at request time, but next build fails on a missing env var in some
+      # routes, so a placeholder is supplied — nothing is called during the build.
+      - name: Build
+        env:
+          API_BASE_URL: https://api.example.invalid/v1
+          NEXT_PUBLIC_SITE_URL: https://example.invalid
+        run: npm run build
