@@ -1,4 +1,6 @@
+import { storeHostname } from '@storekit/shared';
 import { PriceText } from './PriceText.jsx';
+import { SITE } from '../lib/site.js';
 
 /**
  * The hero visual: a merchant's live storefront, with the order landing on their phone.
@@ -72,7 +74,7 @@ export function StorefrontMockup() {
                 strokeLinejoin="round"
               />
             </svg>
-            storekit.site/asha-boutique
+            {storeHostname({ storefrontBaseUrl: SITE.storefrontUrl }, 'asha-boutique')}
           </span>
         </div>
 
