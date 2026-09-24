@@ -104,7 +104,7 @@ const HOME_FAQ = [
   },
   {
     q: 'Do I need a website or a domain?',
-    a: 'No. Your store gets its own link the moment you create it. You can point your own domain at it later if you want to.',
+    a: 'No. Your store gets its own StoreKit link the moment you create it. If you want your own domain, the Business and Pro plans let you connect one.',
   },
   {
     q: 'What if I already sell on WhatsApp and Instagram?',
@@ -391,30 +391,30 @@ export default function LandingPage() {
                   data-reveal
                   style={{ '--reveal-delay': `${index * 80}ms` }}
                   className={`relative rounded-xl p-8 transition-shadow ${
-                    plan.popular
+                    plan.featured
                       ? 'bg-ink-900 text-white shadow-lift'
                       : 'border border-line bg-canvas shadow-card'
                   }`}
                 >
-                  {plan.popular && (
+                  {plan.badge && (
                     <span className="pill absolute -top-3 left-8 bg-ink-900 text-white">
-                      Most popular
+                      {plan.badge}
                     </span>
                   )}
 
-                  <h3 className={`display-3 ${plan.popular ? 'text-white' : ''}`}>{plan.name}</h3>
-                  <p className={`mt-1.5 text-sm ${plan.popular ? 'text-white/60' : 'text-ink-500'}`}>
+                  <h3 className={`display-3 ${plan.featured ? 'text-white' : ''}`}>{plan.name}</h3>
+                  <p className={`mt-1.5 text-sm ${plan.featured ? 'text-white/60' : 'text-ink-500'}`}>
                     {plan.tagline}
                   </p>
 
                   <p className="mt-7 flex items-baseline gap-1.5">
-                    <span className={`font-display text-4xl font-bold ${plan.popular ? 'text-white' : 'text-ink-900'}`}>
+                    <span className={`font-display text-4xl font-bold ${plan.featured ? 'text-white' : 'text-ink-900'}`}>
                       <PriceText paise={plan.monthlyPaise} />
                     </span>
-                    <span className={`text-sm ${plan.popular ? 'text-white/60' : 'text-ink-500'}`}>/ month</span>
+                    <span className={`text-sm ${plan.featured ? 'text-white/60' : 'text-ink-500'}`}>/ month</span>
                   </p>
 
-                  <ul className={`mt-7 space-y-2.5 text-sm ${plan.popular ? 'text-white/75' : 'text-ink-600'}`}>
+                  <ul className={`mt-7 space-y-2.5 text-sm ${plan.featured ? 'text-white/75' : 'text-ink-600'}`}>
                     {plan.highlights.slice(0, 3).map((highlight) => (
                       <li key={highlight} className="flex gap-2.5">
                         <svg
@@ -423,7 +423,7 @@ export default function LandingPage() {
                           viewBox="0 0 24 24"
                           fill="none"
                           aria-hidden="true"
-                          className={`mt-0.5 shrink-0 ${plan.popular ? 'text-white/70' : 'text-ink-900'}`}
+                          className={`mt-0.5 shrink-0 ${plan.featured ? 'text-white/70' : 'text-ink-900'}`}
                         >
                           <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
@@ -435,7 +435,7 @@ export default function LandingPage() {
                   <Link
                     href="/pricing"
                     className={`mt-8 w-full ${
-                      plan.popular ? 'btn bg-white text-ink-900 hover:bg-ink-200' : 'btn-secondary'
+                      plan.featured ? 'btn bg-white text-ink-900 hover:bg-ink-200' : 'btn-secondary'
                     }`}
                   >
                     See what is included

@@ -9,12 +9,7 @@ import {
 import { Logo } from './Logo.jsx';
 import { handoffCode, confirmCheckoutSchema, planSelectionSchema } from '@storekit/validation';
 import { openCheckout } from '../lib/cashfree.js';
-
-const Check = () => (
-  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="mt-0.5 shrink-0 text-accent-600">
-    <path d="M20 6 9 17l-5-5" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
+import { PlanFeatureList } from './PlanFeatureList.jsx';
 
 const Spinner = ({ label }) => (
   <div className="flex flex-col items-center gap-4 py-24" role="status">
@@ -407,14 +402,7 @@ export function BillingClient({ deepLink }) {
                   <p className="mt-1 text-sm text-ink-500">{formatMoney(priceFor(plan.planId, cycle))} billed yearly</p>
                 )}
 
-                <ul className="mt-5 space-y-2.5">
-                  {plan.highlights.slice(0, 4).map((item) => (
-                    <li key={item} className="flex gap-2 text-sm text-ink-700">
-                      <Check />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                <PlanFeatureList features={plan.featureList} className="mt-5 space-y-2.5" />
               </button>
             );
           })}

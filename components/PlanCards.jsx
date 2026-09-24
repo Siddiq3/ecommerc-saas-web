@@ -2,33 +2,11 @@
 
 import { useState } from 'react';
 import {
-  BILLING_PLANS, PLANS, COMPARISON_ROWS, TRIAL_DAYS,
-  priceFor, effectiveMonthlyPrice, yearlySavingPercent, formatMoney,
+  BILLING_PLANS, COMPARISON_ROWS, TRIAL_DAYS,
+  priceFor, effectiveMonthlyPrice, yearlySavingPercent, formatMoney, describePlanValue,
 } from '@storekit/shared';
 import { appStoreUrl } from '../lib/site.js';
-
-const Check = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="mt-0.5 shrink-0 text-accent-600">
-    <path d="M20 6 9 17l-5-5" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-const Dash = () => (
-  <span aria-hidden="true" className="text-ink-400">
-    &ndash;
-  </span>
-);
-
-/** Renders a limit from the entitlement table in the unit a shopkeeper thinks in. */
-const formatLimit = (value, format) => {
-  if (format === 'boolean') return value;
-  if (format === 'bytes') {
-    const gb = value / (1024 * 1024 * 1024);
-    return gb >= 1 ? `${Math.round(gb)} GB` : `${Math.round(value / (1024 * 1024))} MB`;
-  }
-  if (format === 'days') return value >= 365 ? `${Math.round(value / 365)} year${value >= 730 ? 's' : ''}` : `${value} days`;
-  return new Intl.NumberFormat('en-IN').format(value);
-};
+import { PlanFeatureList, Tick as Check, Cross } from './PlanFeatureList.jsx';
 
 export function PlanCards() {
   const [cycle, setCycle] = useState('monthly');
@@ -87,11 +65,11 @@ export function PlanCards() {
             <div
               key={plan.planId}
               className={`card relative flex flex-col p-7 ${
-                plan.popular ? 'ring-2 ring-accent-600 lg:-my-3 lg:py-10' : ''
+                plan.featured ? 'ring-2 ring-accent-600 lg:-my-3 lg:py-10' : ''
               }`}
             >
-              {plan.popular && (
-                <span className="pill absolute -top-3 left-7 bg-accent-600 text-white">Most popular</span>
+              {plan.badge && (
+                <span className="pill absolute -top-3 left-7 bg-accent-600 text-white">{plan.badge}</span>
               )}
 
               <h3 className="text-lg font-semibold">{plan.name}</h3>
@@ -107,19 +85,13 @@ export function PlanCards() {
 
               <a
                 href={appStoreUrl()}
-                className={`${plan.popular ? 'btn-primary' : 'btn-secondary'} mt-7 w-full py-3`}
+                className={`${plan.featured ? 'btn-primary' : 'btn-secondary'} mt-7 w-full py-3`}
               >
-                Start {TRIAL_DAYS}-day trial
+                {plan.cta}
               </a>
+              <p className="mt-2.5 text-center text-xs text-ink-500">{TRIAL_DAYS} days free. No card to start.</p>
 
-              <ul className="mt-8 space-y-3.5">
-                {plan.highlights.map((item) => (
-                  <li key={item} className="flex gap-2.5 text-sm leading-relaxed text-ink-700">
-                    <Check />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <PlanFeatureList features={plan.featureList} />
             </div>
           );
         })}
@@ -155,14 +127,27 @@ export function PlanCards() {
                     {row.label}
                   </th>
                   {BILLING_PLANS.map((plan) => {
-                    const value = PLANS[plan.planId]?.[row.key];
-                    const display = formatLimit(value, row.format);
+                    const value = describePlanValue(plan.planId, row);
+                    const isFlag = row.format === 'boolean' || row.format === 'feature' || row.format === 'count';
                     return (
                       <td key={plan.planId} className="px-4 py-4 text-sm text-ink-800">
-                        {row.format === 'boolean' ? (
-                          display ? <Check /> : <Dash />
+                        {isFlag && !value.included ? (
+                          <>
+                            <Cross />
+                            <span className="sr-only">Not included</span>
+                          </>
                         ) : (
-                          display
+                          <span className="inline-flex items-center gap-2">
+                            {row.format === 'boolean' || row.format === 'feature' ? (
+                              <>
+                                <Check />
+                                <span className="sr-only">Included</span>
+                              </>
+                            ) : (
+                              value.text
+                            )}
+                            {value.note && <span className="text-xs font-medium text-ink-500">{value.note}</span>}
+                          </span>
                         )}
                       </td>
                     );

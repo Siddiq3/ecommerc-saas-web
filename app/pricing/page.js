@@ -30,6 +30,14 @@ const FAQ = [
     a: 'Yes, up or down, whenever you like. If you move down to a smaller plan we will tell you first if your store is over that plan’s limits.',
   },
   {
+    q: 'Do I need my own domain?',
+    a: 'No. Every store gets a StoreKit link the moment it is created. If you want your own domain instead, connect it on the Business plan (one domain) or the Pro plan.',
+  },
+  {
+    q: 'What happens to my domains if I move to a smaller plan?',
+    a: 'Nothing is removed. Domains you have already connected stay active. You just cannot add another until you are back within your new plan’s allowance, and you choose which ones to remove.',
+  },
+  {
     q: 'Can I cancel?',
     a: 'Any time. Your store stays live until the end of the period you have already paid for.',
   },
