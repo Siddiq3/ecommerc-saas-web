@@ -31,7 +31,7 @@ const FAQ = [
   },
   {
     q: 'Do I need my own domain?',
-    a: 'No. Every store gets a StoreKit link the moment it is created. If you want your own domain instead, connect it on the Business plan (one domain) or the Pro plan.',
+    a: 'No. Every store gets a StoreKit link the moment it is created. If you want your own domain instead, connect it on the Business or Pro plan.',
   },
   {
     q: 'What happens to my domains if I move to a smaller plan?',
