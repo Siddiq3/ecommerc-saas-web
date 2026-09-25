@@ -1,6 +1,7 @@
 import { Urbanist, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
-import { SITE, siteUrl } from '../lib/site.js';
+import { SITE, siteUrl, clientSiteConfig } from '../lib/site.js';
+import { SiteConfigProvider } from '../components/SiteConfig.jsx';
 
 /**
  * Two typefaces, with distinct jobs — the same pairing auto-garage's website uses.
@@ -59,7 +60,7 @@ export default function RootLayout({ children }) {
         >
           Skip to content
         </a>
-        {children}
+        <SiteConfigProvider value={clientSiteConfig()}>{children}</SiteConfigProvider>
       </body>
     </html>
   );

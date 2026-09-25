@@ -5,11 +5,12 @@ import {
   BILLING_PLANS, COMPARISON_ROWS, TRIAL_DAYS,
   priceFor, effectiveMonthlyPrice, yearlySavingPercent, formatMoney, describePlanValue,
 } from '@storekit/shared';
-import { appStoreUrl } from '../lib/site.js';
+import { useSiteConfig } from './SiteConfig.jsx';
 import { PlanFeatureList, Tick as Check, Cross } from './PlanFeatureList.jsx';
 
 export function PlanCards() {
   const [cycle, setCycle] = useState('monthly');
+  const { appStoreUrl } = useSiteConfig();
   const saving = yearlySavingPercent();
 
   return (
@@ -84,7 +85,7 @@ export function PlanCards() {
               </div>
 
               <a
-                href={appStoreUrl()}
+                href={appStoreUrl}
                 className={`${plan.featured ? 'btn-primary' : 'btn-secondary'} mt-7 w-full py-3`}
               >
                 {plan.cta}
