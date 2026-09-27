@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   BILLING_PLANS, TRIAL_DAYS, PLAN_STATUS_LABELS,
-  priceFor, effectiveMonthlyPrice, yearlySavingPercent, formatMoney,
+  priceFor, formatMoney,
 } from '@storekit/shared';
 import { Logo } from './Logo.jsx';
 import { handoffCode, confirmCheckoutSchema, planSelectionSchema } from '@storekit/validation';
@@ -50,7 +50,8 @@ export function BillingClient({ deepLink }) {
   const [phase, setPhase] = useState('authenticating');
   const [account, setAccount] = useState(null);
   const [status, setStatus] = useState(null);
-  const [cycle, setCycle] = useState('monthly');
+  // Monthly only: there is no yearly plan.
+  const cycle = 'monthly';
   const [selected, setSelected] = useState('growth');
   const [error, setError] = useState(null);
   const [busy, setBusy] = useState(false);
@@ -100,7 +101,6 @@ export function BillingClient({ deepLink }) {
           setStatus(payload.data);
         }
 
-        if (payload.data.status?.billingCycle) setCycle(payload.data.status.billingCycle);
         if (view === 'manage') setPhase('manage');
         else setPhase('ready');
       } catch {
@@ -252,7 +252,6 @@ export function BillingClient({ deepLink }) {
     );
   }
 
-  const saving = yearlySavingPercent();
   const currentPlan = BILLING_PLANS.find((p) => p.planId === status?.planId);
 
   return (
@@ -344,31 +343,6 @@ export function BillingClient({ deepLink }) {
             : 'Pick a plan to unlock your store.'}
         </p>
 
-        {/* Cycle toggle */}
-        <div className="mt-7 inline-flex items-center gap-1 rounded-full border border-line bg-surface p-1 shadow-card">
-          {['monthly', 'yearly'].map((option) => {
-            const active = cycle === option;
-            return (
-              <button
-                key={option}
-                type="button"
-                aria-pressed={active}
-                onClick={() => setCycle(option)}
-                className={`rounded-full px-5 py-2 text-sm font-semibold capitalize transition-colors ${
-                  active ? 'bg-accent-600 text-white' : 'text-ink-600 hover:text-ink-900'
-                }`}
-              >
-                {option}
-                {option === 'yearly' && (
-                  <span className={`ml-2 text-xs font-bold ${active ? 'text-accent-100' : 'text-accent-700'}`}>
-                    save {saving}%
-                  </span>
-                )}
-              </button>
-            );
-          })}
-        </div>
-
         <div className="mt-8 grid gap-5 lg:grid-cols-3">
           {BILLING_PLANS.map((plan) => {
             const active = selected === plan.planId;
@@ -394,13 +368,10 @@ export function BillingClient({ deepLink }) {
 
                 <p className="mt-5">
                   <span className="text-3xl font-bold text-ink-900">
-                    {formatMoney(effectiveMonthlyPrice(plan.planId, cycle))}
+                    {formatMoney(priceFor(plan.planId, cycle))}
                   </span>
                   <span className="text-sm text-ink-500"> / month</span>
                 </p>
-                {cycle === 'yearly' && (
-                  <p className="mt-1 text-sm text-ink-500">{formatMoney(priceFor(plan.planId, cycle))} billed yearly</p>
-                )}
 
                 <PlanFeatureList features={plan.featureList} className="mt-5 space-y-2.5" />
               </button>
