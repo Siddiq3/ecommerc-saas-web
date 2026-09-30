@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { loginSchema } from '@storekit/validation';
 
-const CREDENTIALS_SCHEMA = loginSchema.pick({ email: true, mobile: true, password: true });
+const CREDENTIALS_SCHEMA = loginSchema.pick({ identifier: true, password: true });
 
 /** First message per field, in the same shape the field inputs below expect. */
 const fieldErrorsFrom = (issues) => {
@@ -17,7 +17,7 @@ const fieldErrorsFrom = (issues) => {
 export function LoginForm() {
   const router = useRouter();
 
-  const [values, setValues] = useState({ email: '', mobile: '', password: '' });
+  const [values, setValues] = useState({ identifier: '', password: '' });
   const [errors, setErrors] = useState({});
   const [failure, setFailure] = useState(null);
   const [busy, setBusy] = useState(false);
@@ -68,7 +68,7 @@ export function LoginForm() {
       <p className="eyebrow">Billing</p>
       <h1 className="mt-2 text-2xl font-bold text-ink-900">Sign in</h1>
       <p className="mt-1.5 text-sm text-ink-500">
-        Use the same email, mobile number and password as the StoreKit app.
+        Use the same email or mobile number and password as the StoreKit app.
       </p>
 
       {failure && (
@@ -79,41 +79,22 @@ export function LoginForm() {
 
       <form onSubmit={onSubmit} noValidate className="mt-6 space-y-4">
         <div>
-          <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-ink-800">
-            Email
+          <label htmlFor="identifier" className="mb-1.5 block text-sm font-medium text-ink-800">
+            Email or mobile number
           </label>
           <input
-            id="email"
-            type="email"
-            autoComplete="email"
+            id="identifier"
+            type="text"
+            autoComplete="username"
+            autoCapitalize="none"
             className="field"
-            style={errors.email ? { borderColor: 'var(--color-danger)' } : undefined}
-            value={values.email}
-            onChange={set('email')}
-            aria-invalid={Boolean(errors.email)}
-            aria-describedby={errors.email ? 'email-error' : undefined}
+            style={errors.identifier ? { borderColor: 'var(--color-danger)' } : undefined}
+            value={values.identifier}
+            onChange={set('identifier')}
+            aria-invalid={Boolean(errors.identifier)}
+            aria-describedby={errors.identifier ? 'identifier-error' : undefined}
           />
-          {errors.email && <p id="email-error" className="mt-1.5 text-sm text-danger">{errors.email}</p>}
-        </div>
-
-        <div>
-          <label htmlFor="mobile" className="mb-1.5 block text-sm font-medium text-ink-800">
-            Mobile number
-          </label>
-          <input
-            id="mobile"
-            type="tel"
-            inputMode="numeric"
-            autoComplete="tel"
-            placeholder="98765 43210"
-            className="field"
-            style={errors.mobile ? { borderColor: 'var(--color-danger)' } : undefined}
-            value={values.mobile}
-            onChange={set('mobile')}
-            aria-invalid={Boolean(errors.mobile)}
-            aria-describedby={errors.mobile ? 'mobile-error' : undefined}
-          />
-          {errors.mobile && <p id="mobile-error" className="mt-1.5 text-sm text-danger">{errors.mobile}</p>}
+          {errors.identifier && <p id="identifier-error" className="mt-1.5 text-sm text-danger">{errors.identifier}</p>}
         </div>
 
         <div>

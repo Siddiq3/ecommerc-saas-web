@@ -6,8 +6,10 @@ import { handoffCode, accountDeletionRequestSchema, DELETION_REASONS } from '@st
 /**
  * The account-deletion form.
  *
- * Reached only from the app, which opens it in the device's real browser with a
- * single-use, opaque code in the URL — the same handoff billing uses. The code is
+ * Reached from older versions of the app, which open it in the device's real browser with
+ * a single-use, opaque code in the URL — the same handoff billing uses. Current versions
+ * delete the account in the app itself (DELETE /v1/me/account); anyone arriving without a
+ * code sees the public explanation in app/account/delete/page.js instead. The code is
  * exchanged for an httpOnly session cookie and wiped from the address bar before anything
  * else happens.
  *
@@ -141,7 +143,7 @@ export function AccountDeleteClient({ deepLink, supportEmail }) {
       <div className="mx-auto max-w-md py-16">
         <Notice title={error?.message ?? 'This link is no longer valid.'}>
           <p>These links are single-use and expire after a couple of minutes, which is what keeps your account safe if one is ever shared.</p>
-          <p className="mt-3">Open the StoreKit app, go to Account and tap Delete account again for a fresh link.</p>
+          <p className="mt-3">Open the StoreKit app, go to Account and tap Delete account: current versions of the app delete it there, straight away.</p>
           <p className="mt-3">
             Cannot get into the app? Email <a className="underline" href={`mailto:${supportEmail}`}>{supportEmail}</a> from
             the address on your account and we will handle it there.
@@ -186,7 +188,7 @@ export function AccountDeleteClient({ deepLink, supportEmail }) {
           <li>It cannot be undone, and we cannot restore your orders or customer list afterwards.</li>
           <li>Your store link becomes free for anyone else to take.</li>
           <li>Time left on a paid plan is not refunded.</li>
-          <li>Records we are required to keep for tax or fraud rules are held for as long as the law says, then deleted.</li>
+          <li>Your store&rsquo;s subscription billing history (no card or UPI details) is kept for up to 2 years for accounting, then deleted.</li>
         </ul>
         <p className="mt-3">
           Only wanted to close your storefront? You can delete the store from the app and keep your account.

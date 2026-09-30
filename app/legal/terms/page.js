@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function TermsPage() {
   return (
-    <LegalPage title="Terms of service" updated="23 September 2026">
+    <LegalPage title="Terms of service" updated="30 September 2026">
       <LegalSection title="What StoreKit is">
         <p>
           StoreKit is a mobile app and storefront that lets a shop owner ("you", "the merchant")
@@ -21,8 +21,9 @@ export default function TermsPage() {
 
       <LegalSection title="Your trial and subscription">
         <p>
-          Every store starts with a {TRIAL_DAYS}-day free trial. No payment details are collected
-          to start it. If you choose to continue after the trial, you pick a paid plan and pay
+          Your first store starts with a {TRIAL_DAYS}-day free trial. The trial is given once per
+          email address: deleting a store or your account and starting again with the same email
+          does not start a new one. No payment details are collected to start it. If you choose to continue after the trial, you pick a paid plan and pay
           through Cashfree for a month or a year at a time. Each payment buys that one period:
           nothing renews automatically and nothing is auto-debited, so you pay again when you
           want to carry on.

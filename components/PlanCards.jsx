@@ -4,11 +4,9 @@ import {
   BILLING_PLANS, COMPARISON_ROWS, TRIAL_DAYS,
   priceFor, formatMoney, describePlanValue,
 } from '@storekit/shared';
-import { useSiteConfig } from './SiteConfig.jsx';
 import { PlanFeatureList, Tick as Check, Cross } from './PlanFeatureList.jsx';
 
 export function PlanCards() {
-  const { appStoreUrl } = useSiteConfig();
 
   return (
     <>
@@ -39,7 +37,7 @@ export function PlanCards() {
               </div>
 
               <a
-                href={appStoreUrl}
+                href="/signup"
                 className={`${plan.featured ? 'btn-primary' : 'btn-secondary'} mt-7 w-full py-3`}
               >
                 {plan.cta}
