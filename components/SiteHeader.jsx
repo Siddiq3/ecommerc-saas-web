@@ -4,11 +4,9 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Logo } from './Logo.jsx';
 import { NAV_LINKS } from '../lib/nav.js';
-import { useSiteConfig } from './SiteConfig.jsx';
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
-  const { appStoreUrl } = useSiteConfig();
 
   return (
     <header className="sticky top-0 z-40 border-b border-line/70 bg-canvas/85 backdrop-blur-md">
@@ -33,9 +31,9 @@ export function SiteHeader() {
           <Link href="/login" className="btn-ghost text-sm">
             Sign in
           </Link>
-          <a href={appStoreUrl} className="btn-primary">
+          <Link href="/signup" className="btn-primary">
             Start free
-          </a>
+          </Link>
         </div>
 
         <button
@@ -72,9 +70,9 @@ export function SiteHeader() {
             <Link href="/login" onClick={() => setOpen(false)} className="rounded-md px-3 py-2.5 text-base font-medium text-ink-700 hover:bg-canvas">
               Sign in
             </Link>
-            <a href={appStoreUrl} className="btn-primary mt-3">
+            <Link href="/signup" onClick={() => setOpen(false)} className="btn-primary mt-3">
               Start free
-            </a>
+            </Link>
           </div>
         </div>
       )}

@@ -6,7 +6,7 @@ import {
 import { readJson } from '../../../../lib/validate.js';
 
 /**
- * Direct email + mobile + password sign-in, for an owner who lands on the website first
+ * Direct sign-in (email or mobile number, and password), for an owner who lands on the website first
  * rather than tapping "Upgrade" inside the app.
  *
  * This does not mint a second kind of session. It performs the same handoff the app
@@ -17,7 +17,8 @@ import { readJson } from '../../../../lib/validate.js';
  */
 export async function POST(request) {
   try {
-    const credentials = await readJson(request, loginSchema.pick({ email: true, mobile: true, password: true }));
+    // One field, email or mobile number, exactly as the app signs in (the shared loginSchema).
+    const credentials = await readJson(request, loginSchema.pick({ identifier: true, password: true }));
     const clientIp = clientIpFromRequest(request);
 
     const login = await callBackend('/auth/login', { method: 'POST', body: credentials, clientIp });
