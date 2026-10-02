@@ -134,6 +134,12 @@ export function LoginForm() {
           {errors.password && <p id="password-error" className="mt-1.5 text-sm text-danger">{errors.password}</p>}
         </div>
 
+        <div className="flex items-center justify-end">
+          <Link href="/forgot-password" className="text-sm font-medium text-accent-700 hover:underline">
+            Forgot password?
+          </Link>
+        </div>
+
         <button type="submit" disabled={busy} className="btn-primary w-full">
           {busy ? 'Signing in…' : 'Sign in'}
         </button>
