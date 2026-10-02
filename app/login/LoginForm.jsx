@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { loginSchema } from '@storekit/validation';
 
@@ -16,6 +16,7 @@ const fieldErrorsFrom = (issues) => {
 
 export function LoginForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const [values, setValues] = useState({ identifier: '', password: '' });
   const [errors, setErrors] = useState({});
@@ -132,7 +133,18 @@ export function LoginForm() {
             </button>
           </div>
           {errors.password && <p id="password-error" className="mt-1.5 text-sm text-danger">{errors.password}</p>}
+          <div className="mt-2 text-right">
+            <Link href="/forgot-password" className="text-sm font-medium text-accent-700 hover:underline">
+              Forgot password?
+            </Link>
+          </div>
         </div>
+
+        {searchParams.get('reset') === 'success' && (
+          <div className="rounded-lg border border-emerald-600/20 bg-emerald-50 p-4 text-sm text-emerald-700">
+            Password updated. Sign in with your new password.
+          </div>
+        )}
 
         <button type="submit" disabled={busy} className="btn-primary w-full">
           {busy ? 'Signing in…' : 'Sign in'}
