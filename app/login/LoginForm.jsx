@@ -132,6 +132,11 @@ export function LoginForm() {
             </button>
           </div>
           {errors.password && <p id="password-error" className="mt-1.5 text-sm text-danger">{errors.password}</p>}
+          <div className="mt-2 text-right">
+            <Link href="/forgot-password" className="text-sm font-medium text-accent-700 hover:underline">
+              Forgot password?
+            </Link>
+          </div>
         </div>
 
         <button type="submit" disabled={busy} className="btn-primary w-full">
