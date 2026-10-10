@@ -585,3 +585,25 @@
   .shine::after { animation: none; display: none; }
   .rule-in { animation: none; transform: none; }
 }
+
+/* Keep the phone hero readable and its download actions near the store preview. */
+@media (max-width: 639px) {
+  .landing-hero .hero-heading { font-size: clamp(2rem, 8.8vw, 2.5rem); line-height: 1.1; letter-spacing: -.035em; max-width: 360px; }
+  .landing-hero .hero-store-fan { margin-top: 16px; }
+  .landing-hero .fan { padding-top: 32px; padding-bottom: 32px; }
+  .landing-hero .fan-track { padding-left: 56px; }
+  .landing-hero .fan-card { width: 156px; margin-left: -56px; --fan-y: 0px !important; }
+  .landing-hero .fan-bubble { left: 4%; }
+  .landing-hero .fan-bubble > span { padding: 5px 8px; font-size: 10px; }
+  .landing-hero .hero-description { margin-top: 8px; }
+  .landing-hero .hero-description > p:first-child { font-size: 16px; line-height: 1.5; max-width: 340px; }
+  .landing-hero .hero-downloads { flex-wrap: nowrap; gap: 8px; }
+  .landing-hero .hero-downloads > a { flex: 1; max-width: 170px; justify-content: center; gap: 8px; padding: 10px 12px; }
+  .landing-hero .hero-downloads > a span > span:first-child { font-size: 8px; }
+  .landing-hero .hero-downloads > a span > span:last-child { font-size: 14px; }
+}
+@media (max-width: 359px) {
+  .landing-hero .hero-downloads > a { min-width: 0; min-height: 54px; gap: 6px; padding-inline: 9px; }
+  .landing-hero .hero-downloads > a span > span:first-child { font-size: 7px; letter-spacing: 0; white-space: nowrap; }
+  .landing-hero .hero-downloads > a span > span:last-child { font-size: 13px; white-space: nowrap; }
+}

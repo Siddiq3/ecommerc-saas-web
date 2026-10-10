@@ -45,3 +45,4 @@
 .feature-phone{border:0;transform:none;border-radius:35px;box-shadow:0 14px 32px #0000000a}
 @media(min-width:1280px){.feature-phone{height:500px;width:225px}.feature-orders .feature-phone{height:520px;width:234px}.feature-payments .feature-phone{height:540px;width:243px}}
 @media(max-width:1023px){.feature-phone{border:0;transform:none;border-radius:24px}}
+@media (max-width:359px){.feature-controls{gap:8px}.feature-progress{gap:2px;padding-left:8px;padding-right:6px}.feature-dot>span.active{width:28px}.feature-arrows{gap:4px}}

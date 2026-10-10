@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { ProductArt } from './ProductArt.jsx';
 import { PriceText } from './PriceText.jsx';
 
@@ -58,14 +58,12 @@ export function StoreCarousel() {
   const offset = useRef(0);
   const paused = useRef(false);
   const drag = useRef(null);
-  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const el = viewport.current;
     if (!el) return undefined;
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setReady(true);
       return undefined;
     }
 
@@ -90,7 +88,6 @@ export function StoreCarousel() {
     };
 
     frame = requestAnimationFrame(tick);
-    setReady(true);
     return () => cancelAnimationFrame(frame);
   }, []);
 
@@ -128,9 +125,7 @@ export function StoreCarousel() {
 
       <div
         ref={viewport}
-        className={`flex gap-5 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]{display:none} ${
-          ready ? 'opacity-100' : 'opacity-0'
-        } transition-opacity duration-500`}
+        className="flex gap-5 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         style={{ scrollbarWidth: 'none', cursor: 'grab', touchAction: 'pan-y' }}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}

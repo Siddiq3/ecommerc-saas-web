@@ -125,7 +125,7 @@ export function StoreFan() {
         which is what sells it as a shelf that carries on rather than six cards that
         happen to fit.
       */}
-      <div className="relative left-1/2 flex w-max -translate-x-1/2 pl-[52px] sm:pl-[64px]">
+      <div className="fan-track relative left-1/2 flex w-max -translate-x-1/2 pl-[52px] sm:pl-[64px]">
         {STORES.map((store, index) => {
           const arc = ARC[index];
           return (

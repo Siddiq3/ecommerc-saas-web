@@ -90,11 +90,11 @@ export default function LandingPage() {
 
       <main id="main">
         {/* ───────────── Hero ───────────── */}
-        <section className="relative overflow-hidden bg-canvas pb-4 pt-12 sm:pt-16">
+        <section className="landing-hero relative overflow-hidden bg-canvas pb-4 pt-8 sm:pt-16">
           <div className="aurora" aria-hidden="true" />
 
           <div className="shell relative">
-            <h1 className="display-1 word-rise mx-auto max-w-4xl text-center">
+            <h1 className="hero-heading display-1 word-rise mx-auto max-w-4xl text-center">
               {['Start', 'your', 'online', 'store'].map((word, index) => (
                 <span key={word} style={{ '--word-index': index }}>
                   {word}&nbsp;
@@ -112,17 +112,17 @@ export default function LandingPage() {
           </div>
 
           {/* Full-bleed: the fan reads as a shelf that carries on past the screen. */}
-          <div className="relative mt-6">
+          <div className="hero-store-fan relative mt-6">
             <StoreFan />
           </div>
 
-          <div className="shell relative mt-2 text-center">
+          <div className="hero-description shell relative mt-2 text-center">
             <p className="mx-auto max-w-xl text-lg leading-relaxed text-ink-600 sm:text-xl">
               StoreKit turns your WhatsApp and Instagram shop into a real online store —
               in minutes.
             </p>
 
-            <AppBadges className="mt-9" />
+            <AppBadges className="hero-downloads mt-6 sm:mt-9" />
             <a href="#features" className="mt-6 inline-flex items-center gap-2 rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold text-ink-900 transition hover:shadow-card">
               <span aria-hidden="true">▶</span> Watch the SS Mensware demo
             </a>
