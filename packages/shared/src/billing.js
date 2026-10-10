@@ -63,6 +63,7 @@ const FEATURE_LIST = Object.freeze([
   { label: 'Standard templates', has: () => true },
   { label: 'Standard support', has: () => true },
   { label: 'Custom domain', has: (e) => e.maxCustomDomains > 0 },
+  { label: 'Remove StoreKit branding', has: (e) => e.removeBranding },
   { label: 'Priority support', has: (e) => e.prioritySupport },
   { label: 'Custom storefront design', has: (e) => e.customDesign, feature: 'customDesign' },
 ]);
@@ -114,7 +115,7 @@ export const BILLING_PLANS = Object.freeze([
     tagline: 'Connect your own domain and grow your store.',
     cta: 'Choose Business',
     featured: true,
-    badge: 'Your own domain',
+    badge: 'Recommended',
     featureList: planFeatureList('growth'),
     highlights: [
       'Everything in Starter',
