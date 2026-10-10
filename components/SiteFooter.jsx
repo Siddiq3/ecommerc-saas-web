@@ -56,7 +56,7 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-accent-200 bg-accent-100/50">
-        <div className="shell flex flex-col gap-2 py-6 text-xs text-ink-500 sm:flex-row sm:items-center sm:justify-between">
+        <div className="shell flex flex-col gap-2 py-6 text-xs font-bold text-ink-500 sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {new Date().getFullYear()} {SITE.name}. Made with <span role="img" aria-label="love">❤️</span> in India. By ssiddiq</p>
           <p>Prices in Indian rupees, inclusive of applicable taxes.</p>
         </div>
