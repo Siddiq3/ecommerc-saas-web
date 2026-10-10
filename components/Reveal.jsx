@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 
 /**
- * Scroll reveal, done once for the whole page.
+ * Scroll reveal, coordinated by one observer for the whole page.
  *
  * One observer for every `[data-reveal]` element beats a component per section: no extra
  * wrapper DOM, no per-element React state, and sections authored as plain server
@@ -28,33 +28,20 @@ export function Reveal() {
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
-          entry.target.setAttribute('data-shown', '');
-          // One-shot: re-animating on the way back up is distracting, not delightful.
-          observer.unobserve(entry.target);
+          if (entry.isIntersecting) entry.target.setAttribute('data-shown', '');
+          else entry.target.removeAttribute('data-shown');
         }
       },
-      // Fires a little before the element reaches the fold, so the motion has finished by
-      // the time the reader's eye arrives.
-      { rootMargin: '0px 0px -12% 0px', threshold: 0.08 },
+      // Reset only once the element leaves the viewport, in either scroll direction.
+      { threshold: 0 },
     );
 
     for (const element of elements) observer.observe(element);
 
-    // Anything already on screen at load should not wait for a scroll that may never come.
-    requestAnimationFrame(() => {
-      for (const element of elements) {
-        const box = element.getBoundingClientRect();
-        if (box.top < window.innerHeight) {
-          element.setAttribute('data-shown', '');
-          observer.unobserve(element);
-        }
-      }
-    });
-
     return () => {
       observer.disconnect();
       root.classList.remove('js-reveal-ready');
+      for (const element of elements) element.removeAttribute('data-shown');
     };
   }, []);
 

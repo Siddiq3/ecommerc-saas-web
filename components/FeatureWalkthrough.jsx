@@ -71,8 +71,8 @@ function FeatureCard({ group, index }) {
   const toggle = () => { setStarted(true); setPaused(playing); };
   return <section ref={root} className={`feature-group ${index === 2 ? 'feature-orders' : ''} ${index === 3 ? 'feature-payments' : ''}`} aria-labelledby={`feature-heading-${index}`} style={{ '--feature-accent': group.color, '--feature-badge': group.badge }}>
     <div className="feature-container">
-      <h2 id={`feature-heading-${index}`} className="feature-heading">{group.title}</h2>
-      <div className={`feature-card ${expanded ? 'is-expanded' : ''}`}>
+      <h2 data-reveal id={`feature-heading-${index}`} className="feature-heading">{group.title}</h2>
+      <div data-reveal className={`feature-card ${expanded ? 'is-expanded' : ''}`}>
         <div className="feature-media" key={`media-${chapter.id}`}>
           <div className="feature-phone">
             <video ref={video} src={`${MEDIA}/${chapter.id}.mp4`} poster={`${MEDIA}/${chapter.id}.jpg`} muted playsInline preload="metadata" aria-label={`${chapter.label} — SS Mensware recorded demo`} onError={() => setFailed(true)} onTimeUpdate={e => setProgress(e.currentTarget.currentTime / (e.currentTarget.duration || 1))} onEnded={() => choose((selected + 1) % slides.length)} />
@@ -112,6 +112,6 @@ function FeatureCard({ group, index }) {
 export function FeatureWalkthrough() {
   return <div id="features" className="feature-walkthrough">
     {GROUPS.map((group, index) => <FeatureCard key={group.title} group={group} index={index} />)}
-    <div className="feature-footer"><p>Recorded in the real app using SS Mensware and sample orders.</p><a href={`${MEDIA}/full-walkthrough.mp4`}>Watch the full walkthrough ↗</a></div>
+    <div data-reveal className="feature-footer"><p>Recorded in the real app using SS Mensware and sample orders.</p><a href={`${MEDIA}/full-walkthrough.mp4`}>Watch the full walkthrough ↗</a></div>
   </div>;
 }

@@ -427,6 +427,18 @@
   animation-delay: calc(var(--word-index, 0) * 85ms);
 }
 
+/* Restart the hero's word animation on each visit, without a second wrapper fade. */
+.js-reveal-ready [data-reveal="words"] {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+.js-reveal-ready [data-reveal="words"]:not([data-shown]) > span {
+  animation: none;
+  opacity: 0;
+  transform: translateY(0.45em);
+}
+
 /* ── Shine sweep on the primary CTA ──────────────────────────────────────── */
 @keyframes shine {
   from { transform: translateX(-120%) skewX(-18deg); }
@@ -573,6 +585,11 @@
   .js-reveal-ready [data-reveal] { opacity: 1; transform: none; }
   .marquee-track { animation: none; }
   .word-rise > span { animation: none; opacity: 1; transform: none; }
+  .js-reveal-ready [data-reveal="words"]:not([data-shown]) > span {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
   /* The fan must still land in its arc when it does not animate into it. */
   .fan-card {
     animation: none;

@@ -94,7 +94,7 @@ export default function LandingPage() {
           <div className="aurora" aria-hidden="true" />
 
           <div className="shell relative">
-            <h1 className="hero-heading display-1 word-rise mx-auto max-w-4xl text-center">
+            <h1 data-reveal="words" className="hero-heading display-1 word-rise mx-auto max-w-4xl text-center">
               {['Start', 'your', 'online', 'store'].map((word, index) => (
                 <span key={word} style={{ '--word-index': index }}>
                   {word}&nbsp;
@@ -116,7 +116,7 @@ export default function LandingPage() {
             <StoreFan />
           </div>
 
-          <div className="hero-description shell relative mt-2 text-center">
+          <div data-reveal className="hero-description shell relative mt-2 text-center">
             <p className="mx-auto max-w-xl text-lg leading-relaxed text-ink-600 sm:text-xl">
               StoreKit turns your WhatsApp and Instagram shop into a real online store —
               in minutes.
@@ -149,7 +149,7 @@ export default function LandingPage() {
             <StoreCarousel />
           </div>
 
-          <p className="shell mt-12 text-center text-xs font-semibold uppercase tracking-[0.18em] text-ink-400">
+          <p data-reveal className="shell mt-12 text-center text-xs font-semibold uppercase tracking-[0.18em] text-ink-400">
             Boutiques · Home bakers · Jewellery · Thrift stores · Plant shops · Handmade
           </p>
         </section>
