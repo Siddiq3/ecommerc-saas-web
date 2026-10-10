@@ -1,6 +1,6 @@
 import { resetPasswordSchema } from '@storekit/validation';
-import { callBackend, toRouteError, clientIpFromRequest } from '../../../../../lib/backend.js';
-import { readJson } from '../../../../../lib/validate.js';
+import { callBackend, toRouteError, clientIpFromRequest } from '../../../../lib/backend.js';
+import { readJson } from '../../../../lib/validate.js';
 
 export async function POST(request) {
   try {

@@ -9,6 +9,7 @@ import { StoreCarousel } from '../components/StoreCarousel.jsx';
 import { Counter } from '../components/Counter.jsx';
 import { AppBadges } from '../components/AppBadges.jsx';
 import { Faq } from '../components/Faq.jsx';
+import { FeatureWalkthrough } from '../components/FeatureWalkthrough.jsx';
 
 /**
  * The landing page.
@@ -17,39 +18,6 @@ import { Faq } from '../components/Faq.jsx';
  * chats), here is the thing (a real storefront), here is proof it works, here is what it
  * costs. Each section is one idea; nothing is repeated in different words.
  */
-
-const FEATURES = [
-  {
-    emoji: '🔗',
-    title: 'One link that is actually yours',
-    body: 'Your shop gets its own page. Put it in your Instagram bio or send it on WhatsApp — customers browse and order without downloading a thing.',
-  },
-  {
-    emoji: '💸',
-    title: 'UPI and cash on delivery',
-    body: 'The payments your customers already use. UPI references land in your dashboard to confirm against your own bank record.',
-  },
-  {
-    emoji: '🛒',
-    title: 'No sign-up to buy',
-    body: 'No account, no password, no drop-off. They pick, enter an address, and the order lands on your phone.',
-  },
-  {
-    emoji: '📐',
-    title: 'Sizes, colours and stock',
-    body: 'Stock per size and colour. When the last one sells it stops being orderable, so you never take an order you cannot fill.',
-  },
-  {
-    emoji: '🎟️',
-    title: 'Coupons and delivery rules',
-    body: 'Run a discount code, set a flat delivery charge, or make delivery free over an amount you choose.',
-  },
-  {
-    emoji: '🔒',
-    title: 'Built to be trusted',
-    body: 'Your customers’ details stay yours. Payments are verified, and every change to an order is recorded.',
-  },
-];
 
 const STEPS = [
   {
@@ -155,6 +123,9 @@ export default function LandingPage() {
             </p>
 
             <AppBadges className="mt-9" />
+            <a href="#features" className="mt-6 inline-flex items-center gap-2 rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold text-ink-900 transition hover:shadow-card">
+              <span aria-hidden="true">▶</span> Watch the SS Mensware demo
+            </a>
 
             <p className="mt-5 text-sm text-ink-500">
               <span aria-hidden="true">✨</span> {TRIAL_DAYS} days free · no card needed · cancel anytime
@@ -184,99 +155,7 @@ export default function LandingPage() {
         </section>
 
 
-        {/* ───────────── Features, as a bento grid ───────────── */}
-        <section id="features" className="scroll-mt-20 py-24 sm:py-32">
-          <div className="shell">
-            <div data-reveal className="mx-auto max-w-2xl text-center">
-              <p className="eyebrow">⚡ Everything you need</p>
-              <h2 className="display-2 mt-4">The tedious parts of a shop, handled</h2>
-              <p className="mt-5 text-lg leading-relaxed text-ink-600">
-                Not a website builder. A shop that already knows what a shop needs to do.
-              </p>
-            </div>
-
-            <div className="mt-16 grid gap-5 lg:grid-cols-3">
-              {/* The lead cell is wider and carries a visual, so the grid has a focal point
-                  instead of six identical boxes. */}
-              <div data-reveal className="bento lg:col-span-2">
-                <div className="grid gap-8 p-8 sm:p-10 md:grid-cols-2 md:items-center">
-                  <div>
-                    <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-canvas text-2xl">
-                      <span aria-hidden="true">📱</span>
-                    </span>
-                    <h3 className="display-3 mt-6">Run the whole thing from your phone</h3>
-                    <p className="mt-3 leading-relaxed text-ink-600">
-                      Orders, stock, payments and customers. No laptop, no spreadsheet, no
-                      “I will update it when I get home”.
-                    </p>
-                  </div>
-
-                  <div className="relative">
-                    <div className="mx-auto w-full max-w-[180px] rounded-xl border border-line bg-canvas p-2.5 shadow-lift">
-                      <div className="rounded-lg bg-surface p-3">
-                        <p className="text-[10px] font-semibold uppercase tracking-wider text-ink-400">Needs you</p>
-                        {[
-                          { label: 'New orders', count: 3, tone: 'bg-ink-900' },
-                          { label: 'Verify payment', count: 1, tone: 'bg-[#c39c6c]' },
-                          { label: 'Ready to ship', count: 5, tone: 'bg-[#527a66]' },
-                        ].map((row) => (
-                          <div key={row.label} className="mt-2.5 flex items-center gap-2">
-                            <span className={`h-6 w-6 shrink-0 rounded-md ${row.tone}`} />
-                            <span className="flex-1 truncate text-[11px] font-medium text-ink-800">{row.label}</span>
-                            <span className="text-[11px] font-bold text-ink-900">{row.count}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {FEATURES.slice(0, 1).map((feature) => (
-                <div key={feature.title} data-reveal style={{ '--reveal-delay': '80ms' }} className="bento p-8">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-canvas text-2xl">
-                    <span aria-hidden="true">{feature.emoji}</span>
-                  </span>
-                  <h3 className="display-3 mt-6">{feature.title}</h3>
-                  <p className="mt-3 leading-relaxed text-ink-600">{feature.body}</p>
-                </div>
-              ))}
-
-              {FEATURES.slice(1).map((feature, index, all) => (
-                <div
-                  key={feature.title}
-                  data-reveal
-                  style={{ '--reveal-delay': `${index * 60}ms` }}
-                  className={`bento p-8 ${index === all.length - 1 ? 'lg:col-span-2' : ''}`}
-                >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-canvas text-2xl">
-                    <span aria-hidden="true">{feature.emoji}</span>
-                  </span>
-                  <h3 className="display-3 mt-6">{feature.title}</h3>
-                  <p className="mt-3 max-w-md leading-relaxed text-ink-600">{feature.body}</p>
-
-                  {index === all.length - 1 && (
-                    <ul className="mt-7 flex flex-wrap gap-2.5">
-                      {['Payments verified by you', 'Every order change recorded', 'Customer data stays yours'].map(
-                        (claim) => (
-                          <li
-                            key={claim}
-                            className="flex items-center gap-1.5 rounded-full border border-line bg-canvas px-3 py-1.5 text-xs font-medium text-ink-600"
-                          >
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="text-accent-600">
-                              <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                            {claim}
-                          </li>
-                        ),
-                      )}
-                    </ul>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <FeatureWalkthrough />
 
         {/* ───────────── Dark band: how it works ───────────── */}
         <section id="how" className="scroll-mt-20 bg-ink-900 py-24 sm:py-32">
