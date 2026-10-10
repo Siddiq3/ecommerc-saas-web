@@ -358,6 +358,7 @@ export function BillingClient({ deepLink }) {
                   active ? 'ring-2 ring-accent-600' : 'hover:border-line-strong'
                 }`}
               >
+                {plan.badge && <span className="pill mb-3 bg-accent-600 text-white">{plan.badge}</span>}
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <h3 className="font-semibold text-ink-900">{plan.name}</h3>
