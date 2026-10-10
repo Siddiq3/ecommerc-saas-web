@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { BILLING_PLANS, TRIAL_DAYS, formatMoney } from '@storekit/shared';
 import { SiteHeader } from '../components/SiteHeader.jsx';
 import { SiteFooter } from '../components/SiteFooter.jsx';
+import { PlanFeatureList } from '../components/PlanFeatureList.jsx';
 import { PriceText } from '../components/PriceText.jsx';
 import { StoreFan } from '../components/StoreFan.jsx';
 import { Reveal } from '../components/Reveal.jsx';
@@ -293,23 +294,7 @@ export default function LandingPage() {
                     <span className={`text-sm ${plan.featured ? 'text-white/60' : 'text-ink-500'}`}>/ month</span>
                   </p>
 
-                  <ul className={`mt-7 space-y-2.5 text-sm ${plan.featured ? 'text-white/75' : 'text-ink-600'}`}>
-                    {plan.highlights.slice(0, 3).map((highlight) => (
-                      <li key={highlight} className="flex gap-2.5">
-                        <svg
-                          width="16"
-                          height="16"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          aria-hidden="true"
-                          className={`mt-0.5 shrink-0 ${plan.featured ? 'text-white/70' : 'text-ink-900'}`}
-                        >
-                          <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                        {highlight}
-                      </li>
-                    ))}
-                  </ul>
+                  <PlanFeatureList features={plan.featureList} dark={plan.featured} className="mt-7 space-y-2.5" />
 
                   <Link
                     href="/pricing"
