@@ -7,10 +7,7 @@ import { ProductArt } from './ProductArt.jsx';
  * bubble naming its category. It does the persuading before a word of copy is read: a
  * merchant sees a shop that looks like theirs and understands the product immediately.
  *
- * Every card is drawn — layout, gradient "photography", overlaid headline — rather than
- * screenshotted, because there are no real stores to screenshot yet and a grey rectangle
- * would undo the whole effect. The shape of each card matches a real storefront, so these
- * can be swapped for screenshots one at a time without touching the fan itself.
+ * Real product photography sits inside lightweight example storefront layouts.
  */
 
 const STORES = [
@@ -81,8 +78,9 @@ const StoreCard = ({ store }) => (
     </div>
 
     {/* The full-bleed campaign image, with the headline a real store would overlay. */}
-    <div className="relative">
-      <ProductArt kind={store.kind} className="aspect-[4/3] w-full" />
+    <div className="relative aspect-[4/3] w-full overflow-hidden bg-ink-100">
+      <ProductArt kind={store.kind} className="aspect-[4/3] w-full" priority />
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 p-3">
         <p
           className={`font-display text-[11px] font-bold leading-tight ${

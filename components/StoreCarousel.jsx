@@ -18,12 +18,12 @@ import { PriceText } from './PriceText.jsx';
  */
 
 const STORES = [
-  { kind: 'apparel', emoji: '👗', store: 'Asha Boutique', item: 'Cotton Anarkali', price: 129900, city: 'Hyderabad' },
-  { kind: 'jewellery', emoji: '💍', store: 'Meena Jewels', item: 'Oxidised Jhumkas', price: 44900, city: 'Jaipur' },
-  { kind: 'cosmetics', emoji: '💄', store: 'Glow Bar', item: 'Vitamin C Serum', price: 89900, city: 'Mumbai' },
-  { kind: 'watch', emoji: '⌚', store: 'Tick & Co.', item: 'Minimal Steel 40mm', price: 349900, city: 'Bengaluru' },
-  { kind: 'perfume', emoji: '🧴', store: 'Attar House', item: 'Oud Rose 50ml', price: 189900, city: 'Lucknow' },
-  { kind: 'decor', emoji: '🏺', store: 'Clay & Co.', item: 'Terracotta Vase', price: 74900, city: 'Puducherry' },
+  { kind: 'apparel', emoji: '👕', store: 'SS Mensware', item: 'Premium Casual Shirts', price: 129900, city: 'Hyderabad' },
+  { kind: 'jewellery', emoji: '💍', store: 'Meena Jewels', item: 'Blue Gemstone Earrings', price: 44900, city: 'Jaipur' },
+  { kind: 'cosmetics', emoji: '💄', store: 'Glow Bar', item: 'Daily Face Serum', price: 89900, city: 'Mumbai' },
+  { kind: 'watch', emoji: '⌚', store: 'Tick & Co.', item: 'Classic Steel Watch', price: 349900, city: 'Bengaluru' },
+  { kind: 'perfume', emoji: '🧴', store: 'Attar House', item: 'Eau de Parfum', price: 189900, city: 'Lucknow' },
+  { kind: 'decor', emoji: '🏺', store: 'Clay & Co.', item: 'Minimal Ceramic Vase', price: 74900, city: 'Puducherry' },
 ];
 
 const SPEED_PX_PER_SECOND = 28;
