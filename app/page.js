@@ -336,36 +336,6 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* ───────────── Closing CTA ───────────── */}
-        <section className="py-24 sm:py-32">
-          <div className="shell">
-            <div
-              data-reveal
-              className="relative overflow-hidden rounded-xl bg-ink-900 px-8 py-20 text-center sm:px-16"
-            >
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0"
-                style={{
-                  backgroundImage:
-                    'radial-gradient(55% 70% at 22% 0%, rgb(255 255 255 / 0.1) 0%, transparent 60%), radial-gradient(45% 60% at 88% 100%, rgb(130 176 152 / 0.16) 0%, transparent 60%)',
-                }}
-              />
-              <div className="relative">
-                <h2 className="display-2 text-white">Put your shop online this week</h2>
-                <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-white/85">
-                  Download the app, add a few products, share your link. You could be taking
-                  orders tonight.
-                </p>
-                <AppBadges className="mt-10" />
-                <p className="mt-6 text-sm text-white/70">
-                  <span aria-hidden="true">✨</span>
-                {TRIAL_DAYS} days free · no card needed · cancel anytime
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
 
       <SiteFooter />
