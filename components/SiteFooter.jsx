@@ -9,7 +9,7 @@ const COLUMNS = [
     links: [
       { href: '/#features', label: 'Features' },
       { href: '/#how', label: 'How it works' },
-      { href: '/pricing', label: 'Pricing' },
+      { href: '/#pricing', label: 'Pricing' },
     ],
   },
   {
@@ -25,7 +25,7 @@ const COLUMNS = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-line bg-surface">
+    <footer className="border-t border-accent-200 bg-accent-50">
       <WhatsAppButton />
       <div className="shell grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-2">
@@ -55,9 +55,9 @@ export function SiteFooter() {
         ))}
       </div>
 
-      <div className="border-t border-line">
-        <div className="shell flex flex-col gap-2 py-6 text-xs text-ink-500 sm:flex-row sm:items-center sm:justify-between">
-          <p>&copy; {new Date().getFullYear()} {SITE.name}. Made with <span role="img" aria-label="love">❤️</span> in India.</p>
+      <div className="border-t border-accent-200 bg-accent-100/50">
+        <div className="shell flex flex-col gap-2 py-6 text-xs font-bold text-ink-500 sm:flex-row sm:items-center sm:justify-between">
+          <p>&copy; {new Date().getFullYear()} {SITE.name}. Made with <span role="img" aria-label="love">❤️</span> in India. By ssiddiq</p>
           <p>Prices in Indian rupees, inclusive of applicable taxes.</p>
         </div>
       </div>

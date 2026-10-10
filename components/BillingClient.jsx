@@ -63,6 +63,8 @@ export function BillingClient({ deepLink }) {
     exchanged.current = true;
 
     const params = new URLSearchParams(window.location.search);
+    const requestedPlan = params.get('plan');
+    if (BILLING_PLANS.some((plan) => plan.planId === requestedPlan)) setSelected(requestedPlan);
     // The URL is attacker-controllable, so the code is checked against the shape the API
     // mints before it is sent anywhere. A malformed one is treated as no code.
     const codeParam = handoffCode.safeParse(params.get('code') ?? '');
@@ -358,6 +360,7 @@ export function BillingClient({ deepLink }) {
                   active ? 'ring-2 ring-accent-600' : 'hover:border-line-strong'
                 }`}
               >
+                {plan.badge && <span className="pill mb-3 bg-accent-600 text-white">{plan.badge}</span>}
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <h3 className="font-semibold text-ink-900">{plan.name}</h3>
