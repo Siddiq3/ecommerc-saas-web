@@ -18,20 +18,23 @@ const Cross = () => (
   </svg>
 );
 
-export function PlanFeatureList({ features, className = 'mt-8 space-y-3.5' }) {
+export function PlanFeatureList({ features, className = 'mt-8 space-y-3.5', dark = false }) {
   return (
-    <ul className={className}>
+    <div className={className}>
+      <p className={`text-xs font-semibold ${dark ? 'text-white/80' : 'text-ink-600'}`}>✓ Included · ✕ Not included</p>
+      <ul className="space-y-2.5">
       {features.map((feature) => (
         <li key={feature.label} className="flex gap-2.5 text-sm leading-relaxed">
           {feature.included ? <Tick /> : <Cross />}
-          <span className={feature.included ? 'text-ink-700' : 'text-ink-400'}>
+          <span className={dark ? (feature.included ? 'text-white/90' : 'text-white/65') : (feature.included ? 'text-ink-700' : 'text-ink-500')}>
             <span className="sr-only">{feature.included ? 'Included: ' : 'Not included: '}</span>
             {feature.label}
-            {feature.note && <span className="ml-1.5 whitespace-nowrap text-xs font-medium text-ink-500">{feature.note}</span>}
+            {feature.note && <span className="ml-1.5 whitespace-nowrap text-xs font-medium">{feature.note}</span>}
           </span>
         </li>
       ))}
     </ul>
+    </div>
   );
 }
 
