@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Logo } from './Logo.jsx';
 import { SITE } from '../lib/site.js';
+import { WhatsAppButton } from './WhatsAppButton.jsx';
 
 const COLUMNS = [
   {
@@ -25,6 +26,7 @@ const COLUMNS = [
 export function SiteFooter() {
   return (
     <footer className="border-t border-line bg-surface">
+      <WhatsAppButton />
       <div className="shell grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-2">
           <Logo />
