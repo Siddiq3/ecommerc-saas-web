@@ -63,6 +63,8 @@ export function BillingClient({ deepLink }) {
     exchanged.current = true;
 
     const params = new URLSearchParams(window.location.search);
+    const requestedPlan = params.get('plan');
+    if (BILLING_PLANS.some((plan) => plan.planId === requestedPlan)) setSelected(requestedPlan);
     // The URL is attacker-controllable, so the code is checked against the shape the API
     // mints before it is sent anywhere. A malformed one is treated as no code.
     const codeParam = handoffCode.safeParse(params.get('code') ?? '');
