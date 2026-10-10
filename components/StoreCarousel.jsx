@@ -63,8 +63,20 @@ export function StoreCarousel() {
     const el = viewport.current;
     if (!el) return undefined;
 
+    const mobile = window.matchMedia('(max-width: 639px)');
+    let inView = false;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (mobile.matches && entry.isIntersecting && !inView) {
+        // Start each visit with SS Mensware, including when scrolling back up.
+        offset.current = 0;
+        el.scrollLeft = 0;
+      }
+      inView = entry.isIntersecting;
+    });
+    observer.observe(el);
+
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      return undefined;
+      return () => observer.disconnect();
     }
 
     // One copy's width. The list is rendered twice, so wrapping at half the scroll width
@@ -78,7 +90,7 @@ export function StoreCarousel() {
       const elapsed = now - last;
       last = now;
 
-      if (!paused.current && drag.current === null) {
+      if ((!mobile.matches || inView) && !paused.current && drag.current === null) {
         offset.current += (SPEED_PX_PER_SECOND * elapsed) / 1000;
         const width = loopWidth();
         if (width > 0 && offset.current >= width) offset.current -= width;
@@ -88,7 +100,10 @@ export function StoreCarousel() {
     };
 
     frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
+    return () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+    };
   }, []);
 
   /* Pointer drag, so the rail is steerable and not just decoration. */
