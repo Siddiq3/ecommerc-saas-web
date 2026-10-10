@@ -254,7 +254,7 @@ export default function LandingPage() {
         </section>
 
         {/* ───────────── Pricing teaser ───────────── */}
-        <section className="bg-canvas py-24 sm:py-32">
+        <section id="pricing" className="scroll-mt-24 bg-canvas py-24 sm:py-32">
           <div className="shell">
             <div data-reveal className="mx-auto max-w-2xl text-center">
               <p className="eyebrow">💳 Pricing</p>
@@ -272,37 +272,37 @@ export default function LandingPage() {
                   style={{ '--reveal-delay': `${index * 80}ms` }}
                   className={`relative rounded-xl p-8 transition-shadow ${
                     plan.featured
-                      ? 'bg-ink-900 text-white shadow-lift'
+                      ? 'border-2 border-accent-600 bg-surface shadow-lift'
                       : 'border border-line bg-canvas shadow-card'
                   }`}
                 >
                   {plan.badge && (
-                    <span className="pill absolute -top-3 left-8 bg-ink-900 text-white">
+                    <span className="pill absolute -top-3 left-8 bg-accent-600 text-white">
                       {plan.badge}
                     </span>
                   )}
 
-                  <h3 className={`display-3 ${plan.featured ? 'text-white' : ''}`}>{plan.name}</h3>
-                  <p className={`mt-1.5 text-sm ${plan.featured ? 'text-white/60' : 'text-ink-500'}`}>
+                  <h3 className="display-3">{plan.name}</h3>
+                  <p className="mt-1.5 text-sm text-ink-500">
                     {plan.tagline}
                   </p>
 
                   <p className="mt-7 flex items-baseline gap-1.5">
-                    <span className={`font-display text-4xl font-bold ${plan.featured ? 'text-white' : 'text-ink-900'}`}>
+                    <span className="font-display text-4xl font-bold text-ink-900">
                       <PriceText paise={plan.monthlyPaise} />
                     </span>
-                    <span className={`text-sm ${plan.featured ? 'text-white/60' : 'text-ink-500'}`}>/ month</span>
+                    <span className="text-sm text-ink-500">/ month</span>
                   </p>
 
-                  <PlanFeatureList features={plan.featureList} dark={plan.featured} className="mt-7 space-y-2.5" />
+                  <PlanFeatureList features={plan.featureList} className="mt-7 space-y-2.5" />
 
                   <Link
-                    href="/pricing"
+                    href={`/subscribe?plan=${plan.planId}`}
                     className={`mt-8 w-full ${
-                      plan.featured ? 'btn bg-white text-ink-900 hover:bg-ink-200' : 'btn-secondary'
+                      plan.featured ? 'btn-primary' : 'btn-secondary'
                     }`}
                   >
-                    See what is included
+                    Pay now
                   </Link>
                 </div>
               ))}
