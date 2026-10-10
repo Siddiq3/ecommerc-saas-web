@@ -4,7 +4,7 @@ const PHOTO_ALTS = {
   watch: 'Steel wristwatch styled on dark fabric',
   jewellery: 'Blue gemstone earrings arranged on a green leaf',
   cosmetics: 'Amber skincare dropper bottle on a wooden display stand',
-  apparel: 'Navy, white and burgundy shirts styled on a wooden table',
+  apparel: 'White cotton shirt with red heart and S embroidery on a wooden hanger',
   perfume: 'Black perfume bottle styled with red flowers',
   decor: 'White ceramic vase with green leaves against a grey wall',
 };
@@ -15,7 +15,7 @@ export function ProductArt({ kind = 'apparel', className = '', priority = false 
   return (
     <div className={`relative overflow-hidden bg-ink-100 ${className}`}>
       <Image
-        src={`/images/hero/${category}.jpg`}
+        src={`/images/hero/${category === 'apparel' ? 'white-shirt' : category}.jpg`}
         alt={PHOTO_ALTS[category]}
         fill
         sizes={priority ? '(max-width: 639px) 156px, (max-width: 1023px) 248px, 292px' : '(max-width: 639px) 260px, 290px'}

@@ -18,7 +18,7 @@ import { PriceText } from './PriceText.jsx';
  */
 
 const STORES = [
-  { kind: 'apparel', emoji: '👕', store: 'SS Mensware', item: 'Premium Casual Shirts', price: 129900, city: 'Hyderabad' },
+  { kind: 'apparel', emoji: '👕', store: 'SS Mensware', item: 'Signature White Shirt', price: 129900, city: 'Hyderabad' },
   { kind: 'jewellery', emoji: '💍', store: 'Meena Jewels', item: 'Blue Gemstone Earrings', price: 44900, city: 'Jaipur' },
   { kind: 'cosmetics', emoji: '💄', store: 'Glow Bar', item: 'Daily Face Serum', price: 89900, city: 'Mumbai' },
   { kind: 'watch', emoji: '⌚', store: 'Tick & Co.', item: 'Classic Steel Watch', price: 349900, city: 'Bengaluru' },
