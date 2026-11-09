@@ -11,6 +11,7 @@ import { Counter } from '../components/Counter.jsx';
 import { AppBadges } from '../components/AppBadges.jsx';
 import { Faq } from '../components/Faq.jsx';
 import { FeatureWalkthrough } from '../components/FeatureWalkthrough.jsx';
+import { demoStoreUrl } from '../lib/site.js';
 
 /**
  * The landing page.
@@ -124,9 +125,12 @@ export default function LandingPage() {
             </p>
 
             <AppBadges className="hero-downloads mt-6 sm:mt-9" />
-            <a href="#features" className="mt-6 inline-flex items-center gap-2 rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold text-ink-900 transition hover:shadow-card">
-              <span aria-hidden="true">▶</span> Watch the SS Mensware demo
+            <a href={demoStoreUrl('ss-mensware')} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold text-ink-900 transition hover:shadow-card">
+              <span aria-hidden="true">▶</span> See the SS Mensware demo store
             </a>
+            <p className="mt-3 text-sm text-ink-500">
+              Or try a <a href={demoStoreUrl('kanak-jewels')} target="_blank" rel="noreferrer" className="font-semibold text-ink-900 underline underline-offset-2">jewellery demo store</a>. Browse, add to cart, place a test order.
+            </p>
 
             <p className="mt-5 text-sm text-ink-500">
               <span aria-hidden="true">✨</span> {TRIAL_DAYS} days free · no card needed · cancel anytime
