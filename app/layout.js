@@ -1,22 +1,13 @@
-import { Urbanist, Plus_Jakarta_Sans } from 'next/font/google';
+import { Fraunces, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import { SITE, siteUrl, clientSiteConfig } from '../lib/site.js';
 import { SiteConfigProvider } from '../components/SiteConfig.jsx';
 
-/**
- * Two typefaces, with distinct jobs — the same pairing auto-garage's website uses.
- *
- * Urbanist carries the headlines: tall, slightly geometric letterforms that read as a
- * confident consumer product rather than a B2B dashboard. Plus Jakarta Sans carries body
- * copy, where its larger x-height stays legible at 16px on a phone.
- *
- * Both are self-hosted by next/font at build time, so there is no render-blocking request
- * to Google and no layout shift when they land.
- */
-const display = Urbanist({
+/** Fraunces (with italics) carries headlines; Plus Jakarta Sans carries body copy. */
+const display = Fraunces({
   subsets: ['latin'],
-  weight: ['600', '700', '800'],
-  variable: '--font-urbanist',
+  style: ['normal', 'italic'],
+  variable: '--font-fraunces',
   display: 'swap',
 });
 

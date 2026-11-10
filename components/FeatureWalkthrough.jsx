@@ -24,11 +24,11 @@ const CHAPTERS = [
 ];
 
 const GROUPS = [
-  { title: 'Build Easy.', color: '#B2BEF2', badge: 'linear-gradient(135deg,#4C46D6,#6454D8)', ids: ['setup', 'storefront', 'home', 'social'] },
-  { title: 'Add Products Easy.', color: '#B8E2B1', badge: 'linear-gradient(180deg,#C68E4D,#D55E4F)', ids: ['products', 'categories', 'coupons'] },
-  { title: 'Manage Orders Easy.', color: '#FFE8BB', badge: 'linear-gradient(135deg,#B46913,#C79229)', ids: ['orders', 'delivery', 'customers', 'activity'] },
-  { title: 'Collect Payments Easy.', color: '#E4D5F5', badge: 'linear-gradient(135deg,#6850B2,#9063C2)', ids: ['payments', 'checkout', 'delivery', 'coupons'] },
-  { title: 'Run Your Store Easy.', color: '#D0E8F3', badge: 'linear-gradient(135deg,#287692,#4295AD)', ids: ['analytics', 'policies', 'account'] },
+  { title: 'Build Easy.', color: '#FDE3D3', badge: '#E2511E', ids: ['setup', 'storefront', 'home', 'social'] },
+  { title: 'Add Products Easy.', color: '#FBEEB8', badge: '#B83E15', ids: ['products', 'categories', 'coupons'] },
+  { title: 'Manage Orders Easy.', color: '#FFE8D6', badge: '#E2511E', ids: ['orders', 'delivery', 'customers', 'activity'] },
+  { title: 'Collect Payments Easy.', color: '#F9D9CF', badge: '#101014', ids: ['payments', 'checkout', 'delivery', 'coupons'] },
+  { title: 'Run Your Store Easy.', color: '#F4ECE4', badge: '#B83E15', ids: ['analytics', 'policies', 'account'] },
 ];
 
 function FeatureCard({ group, index }) {

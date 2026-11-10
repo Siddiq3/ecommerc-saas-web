@@ -33,7 +33,7 @@ export function Logo({ className = '', showWord = true }) {
           strokeLinejoin="round"
         />
       </svg>
-      {showWord && <span className="text-lg font-bold tracking-tight text-ink-900">StoreKit</span>}
+      {showWord && <span className="text-lg font-bold tracking-tight text-brand-900">StoreKit</span>}
     </span>
   );
 }

@@ -25,7 +25,10 @@ const COLUMNS = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-accent-200 bg-accent-50">
+    <footer className="relative overflow-hidden border-t border-line bg-surface">
+      <span aria-hidden="true" className="pointer-events-none absolute -bottom-[0.28em] right-0 select-none font-display text-[clamp(7rem,24vw,22rem)] font-semibold italic leading-none text-ink-900/[0.035]">
+        storekit
+      </span>
       <WhatsAppButton />
       <div className="shell grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-2">
@@ -33,7 +36,7 @@ export function SiteFooter() {
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-600">{SITE.description}</p>
           <a
             href={`mailto:${SITE.supportEmail}`}
-            className="mt-4 inline-block text-sm font-medium text-accent-700 hover:text-accent-900"
+            className="mt-4 inline-block text-sm font-medium text-brand-900 hover:text-brand-700"
           >
             {SITE.supportEmail}
           </a>
@@ -41,7 +44,7 @@ export function SiteFooter() {
 
         {COLUMNS.map((column) => (
           <div key={column.title}>
-            <h2 className="text-sm font-semibold text-ink-900">{column.title}</h2>
+            <h2 className="font-sans text-sm font-bold tracking-wide text-brand-900">{column.title}</h2>
             <ul className="mt-4 space-y-3">
               {column.links.map((link) => (
                 <li key={link.href}>
@@ -55,7 +58,7 @@ export function SiteFooter() {
         ))}
       </div>
 
-      <div className="border-t border-accent-200 bg-accent-100/50">
+      <div className="border-t border-line">
         <div className="shell flex flex-col gap-2 py-6 text-xs font-bold text-ink-500 sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {new Date().getFullYear()} {SITE.name}. Made with <span role="img" aria-label="love">❤️</span> in India. By ssiddiq</p>
           <p>Prices in Indian rupees, inclusive of applicable taxes.</p>
