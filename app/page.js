@@ -60,6 +60,7 @@ const FEATURES = [
   { title: 'delivery', emoji: '🚚', items: ['delivery charges', 'free-delivery threshold', 'pincodes you serve'], b: ORANGE },
   { title: 'grow sales', emoji: '📈', items: ['discount coupons', 'sales analytics', 'best sellers'], b: RUST },
   { title: 'khata & day book', emoji: '📒', items: ['who owes you', 'daily cash book', 'bills & expenses'], b: AMBER },
+  { title: 'staff attendance', emoji: '🧑‍🔧', items: ['one-tap daily register', 'salary worked out', 'pay from the day book'], b: INK },
 ];
 
 const TESTIMONIALS = [
@@ -99,6 +100,10 @@ const HOME_FAQ = [
   {
     q: 'What if I already sell on WhatsApp and Instagram?',
     a: 'Keep doing exactly that. Share your store link instead of a price list, and the order arrives with the address, the items and the payment already attached.',
+  },
+  {
+    q: 'Can I keep my staff attendance in the app?',
+    a: 'Yes. Mark everyone present, half day, absent or on leave with one tap each day, and the app works out each person’s salary for the month, monthly or daily wage. Paying them goes straight into your day book. Your staff do not need the app.',
   },
 ];
 

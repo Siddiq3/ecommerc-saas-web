@@ -804,7 +804,11 @@
   top: 108vh;
   width: 0;
   height: 0;
-  rotate: calc((var(--i) - var(--p) * (var(--n) - 1)) * var(--step));
+  /* --d: how many places this card is from the front. Cards far round the wheel fade out,
+     so with many cards the first never wraps round beside the last. max(d, -d) is |d|. */
+  --d: calc(var(--i) - var(--p) * (var(--n) - 1));
+  rotate: calc(var(--d) * var(--step));
+  opacity: clamp(0, 3 - max(var(--d), -1 * var(--d)), 1);
 }
 .wheel-card {
   position: absolute;
