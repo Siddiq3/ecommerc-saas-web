@@ -303,14 +303,6 @@ export function BillingClient({ deepLink }) {
         </div>
       )}
 
-      {status?.plan_status === 'past_due' && (
-        <div className="mt-6">
-          <Notice tone="warn" title="Your last payment did not go through">
-            Pick a plan below to restart your subscription. Your store and products are untouched.
-          </Notice>
-        </div>
-      )}
-
       {/* Manage view for an existing subscriber */}
       {phase === 'manage' && status?.hasSubscription && !status?.cancelledAt && (
         <div className="card mt-6 p-6">

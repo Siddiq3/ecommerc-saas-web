@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import {
-  addressLine, businessName, couponCode, cursor, dateOnly, email, emptyable, isoDateTime, mobile,
+  addressLine, businessName, couponCode, cursor, dateOnly, districtName, email, emptyable, isoDateTime, mobile,
   money, objectId, objectKey, opaqueId, optionalProse, orderNumber, pageLimit, personName, pincode,
   placeName, searchQuery, trackingReference, trackingToken, utr,
 } from './primitives.js';
@@ -45,7 +45,7 @@ export const addressSchema = z
     area: addressLine(2, 120, 'Area'),
     landmark: addressLine(2, 120, 'Landmark').optional().or(z.literal('')),
     city: placeName,
-    district: placeName,
+    district: districtName,
     state: placeName,
     pincode,
     instructions: optionalProse(300, { label: 'Delivery instructions' }),
@@ -210,6 +210,8 @@ export const createCouponSchema = z
     expiresAt: isoDateTime.nullable().optional(),
     allowedPaymentMethods: z.array(paymentMethodSchema).max(2).default([]),
     active: z.boolean().default(true),
+    /** Advertised on the storefront (offers strip) while it is live. Off by default: codes stay private. */
+    showOnStorefront: z.boolean().default(false),
   })
   .strict()
   .superRefine((data, ctx) => {
@@ -244,6 +246,7 @@ export const updateCouponSchema = z
     expiresAt: isoDateTime.nullable().optional(),
     allowedPaymentMethods: z.array(paymentMethodSchema).max(2).optional(),
     active: z.boolean().optional(),
+    showOnStorefront: z.boolean().optional(),
     productIds: z.array(objectId).max(200).optional(),
     categoryIds: z.array(objectId).max(50).optional(),
   })

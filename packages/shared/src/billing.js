@@ -19,7 +19,6 @@ export const PLAN_STATUSES = Object.freeze([
   'trial_expired',
   'subscribed',
   'cancelled',
-  'past_due',
 ]);
 
 /** Statuses that grant access to the product. Everything else hits the paywall. */
@@ -32,7 +31,6 @@ export const PLAN_STATUS_LABELS = Object.freeze({
   trial_expired: 'Trial ended',
   subscribed: 'Active',
   cancelled: 'Cancelling',
-  past_due: 'Payment failed',
 });
 
 export const BILLING_CYCLES = Object.freeze(['monthly', 'yearly']);
@@ -63,7 +61,6 @@ const FEATURE_LIST = Object.freeze([
   { label: 'Standard templates', has: () => true },
   { label: 'Standard support', has: () => true },
   { label: 'Custom domain', has: (e) => e.maxCustomDomains > 0 },
-  { label: 'Remove StoreKit branding', has: (e) => e.removeBranding },
   { label: 'Priority support', has: (e) => e.prioritySupport },
   { label: 'Custom storefront design', has: (e) => e.customDesign, feature: 'customDesign' },
 ]);
@@ -96,7 +93,7 @@ export const BILLING_PLANS = Object.freeze([
     name: PLANS.starter.name,
     monthlyPaise: PLANS.starter.priceMonthly,
     tagline: 'Everything you need to start selling online.',
-    cta: 'Pay now',
+    cta: 'Start Selling',
     featured: false,
     badge: null,
     featureList: planFeatureList('starter'),
@@ -113,9 +110,9 @@ export const BILLING_PLANS = Object.freeze([
     name: PLANS.growth.name,
     monthlyPaise: PLANS.growth.priceMonthly,
     tagline: 'Connect your own domain and grow your store.',
-    cta: 'Pay now',
+    cta: 'Choose Business',
     featured: true,
-    badge: 'Recommended',
+    badge: 'Your own domain',
     featureList: planFeatureList('growth'),
     highlights: [
       'Everything in Starter',
@@ -130,7 +127,7 @@ export const BILLING_PLANS = Object.freeze([
     name: PLANS.pro.name,
     monthlyPaise: PLANS.pro.priceMonthly,
     tagline: 'Build a more branded storefront with priority support.',
-    cta: 'Pay now',
+    cta: 'Go Pro',
     featured: false,
     badge: null,
     featureList: planFeatureList('pro'),

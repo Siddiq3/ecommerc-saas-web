@@ -175,6 +175,21 @@ export const storePageSchema = z
   })
   .strict();
 
+/** A path inside the storefront, for a banner: never a protocol, a host or "//", so it cannot leave the store. */
+const storePath = z
+  .string()
+  .trim()
+  .max(300)
+  .regex(/^\/(?:products|category|search|pages)(?:\/[A-Za-z0-9_~%-][A-Za-z0-9._~%-]*)*\/?(?:\?[A-Za-z0-9._~%=&+-]*)?$/, 'Use a link like /products/… or /category/…')
+  .refine((value) => {
+    try {
+      const path = value.split('?')[0];
+      const decoded = decodeURIComponent(path);
+      return !/%(?:2f|5c)/i.test(path) && !decoded.includes('\\')
+        && !decoded.split('/').some((part) => part === '.' || part === '..');
+    } catch { return false; }
+  }, 'Use a direct link to a store page');
+
 export const updateStoreSettingsSchema = z
   .object({
     theme: themeSchema.partial().optional(),
@@ -183,7 +198,8 @@ export const updateStoreSettingsSchema = z
         z
           .object({
             imageKey: objectKey,
-            link: emptyable(httpsUrl),
+            // An https address, or a page in this store: /products/…, /category/…, /search?q=… (banners usually point inside).
+            link: emptyable(z.union([httpsUrl, storePath])),
             alt: shortText(0, 120, 'Alt text').default(''),
             sortOrder: z.number().int().min(0).max(20).default(0),
           })
@@ -242,6 +258,10 @@ export const updateBusinessSchema = z
     /** null removes the logo; the storefront then shows the store's name instead. */
     logoKey: objectKey.nullable().optional(),
     faviconKey: objectKey.optional(),
+    /** Printed on GST bills; blank when the store is not GST-registered. */
+    gstin: z.string().trim().toUpperCase()
+      .regex(/^\d{2}[A-Z]{5}\d{4}[A-Z][1-9A-Z]Z[0-9A-Z]$/, 'Enter a valid 15-character GSTIN, e.g. 36ABCDE1234F1Z5')
+      .optional().or(z.literal('')),
     contact: z
       .object({
         email: emptyable(email),

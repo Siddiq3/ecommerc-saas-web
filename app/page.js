@@ -322,7 +322,7 @@ export default function LandingPage() {
                     <span className="text-sm text-ink-500">/ month</span>
                   </p>
                   <PlanFeatureList features={plan.featureList} className="mt-7 space-y-2.5" />
-                  <Link href={`/subscribe?plan=${plan.planId}`} className={`mt-8 w-full ${plan.featured ? 'btn-primary' : 'btn-secondary'}`}>Pay now</Link>
+                  <Link href={`/subscribe?plan=${plan.planId}`} className={`mt-8 w-full ${plan.featured ? 'btn-primary' : 'btn-secondary'}`}>{plan.cta}</Link>
                 </div>
               ))}
             </div>

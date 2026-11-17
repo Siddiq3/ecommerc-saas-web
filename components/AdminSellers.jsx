@@ -9,7 +9,6 @@ const PLAN = {
   trial_expired: ['Trial ended', 'bg-red-50 text-red-700'],
   subscribed: ['Paid', 'bg-green-50 text-green-700'],
   cancelled: ['Cancelled', 'bg-amber-50 text-amber-700'],
-  past_due: ['Payment failed', 'bg-red-50 text-red-700'],
   no_store: ['No store', 'bg-slate-100 text-slate-600'],
 };
 const STAGES = {
