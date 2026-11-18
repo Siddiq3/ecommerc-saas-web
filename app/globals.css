@@ -31,6 +31,10 @@
   --color-accent-700: #b83e15;
   --color-accent-900: #7a2a0e;
 
+  /* The StoreFlick logo's own navy and orange. */
+  --color-logo-navy: #002957;
+  --color-logo-orange: #fe7c03;
+
   --color-brand-900: #101014;
   --color-brand-800: #2a2a31;
   --color-brand-700: #b83e15;
@@ -85,7 +89,7 @@
 
   /* Urbanist on headings, Plus Jakarta Sans on body — auto-garage's exact pairing. */
   --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-display: var(--font-fraunces), Georgia, 'Times New Roman', serif;
+  --font-display: var(--font-urbanist), var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
 
   --radius-md: 1rem;      /* 16px */
   --radius-lg: 1.75rem;   /* 28px */
@@ -112,8 +116,8 @@
   h1, h2, h3, h4 {
     font-family: var(--font-display);
     color: var(--color-brand-900);
-    font-weight: 600;
-    letter-spacing: -0.015em;
+    font-weight: 700;
+    letter-spacing: -0.02em;
     text-wrap: balance;
   }
 
@@ -253,25 +257,25 @@
   .display-1 {
     font-family: var(--font-display);
     font-size: clamp(2.75rem, 1.6rem + 5vw, 4.75rem);
-    line-height: 1.02;
-    letter-spacing: -0.02em;
-    font-weight: 600;
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+    font-weight: 800;
   }
 
   .display-2 {
     font-family: var(--font-display);
     font-size: clamp(2rem, 1.35rem + 2.8vw, 3.1rem);
-    line-height: 1.08;
-    letter-spacing: -0.015em;
-    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    font-weight: 700;
   }
 
   .display-3 {
     font-family: var(--font-display);
     font-size: clamp(1.35rem, 1.15rem + 0.9vw, 1.7rem);
     line-height: 1.2;
-    letter-spacing: -0.01em;
-    font-weight: 600;
+    letter-spacing: -0.015em;
+    font-weight: 700;
   }
 
   /* Emerald into teal, on a slight angle. The one place two accents are allowed. */
@@ -649,6 +653,18 @@
 
 .serif-italic { font-family: var(--font-display); font-style: italic; }
 
+/* "StoreFlick" written the way the logo writes it: navy STORE, orange FLICK, bold italic. */
+.brand-name { font-family: var(--font-display); font-style: italic; font-weight: 800; white-space: nowrap; letter-spacing: -0.02em; }
+.brand-name .brand-store { color: var(--color-logo-navy); }
+.brand-name .brand-flick {
+  color: var(--color-logo-orange);
+  background: linear-gradient(180deg, #ffa21a 0%, #ff6a00 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-right: 0.08em;
+}
+
 .chat-bubble {
   position: relative;
   display: inline-block;
@@ -760,9 +776,9 @@
 .dm-heading {
   font-family: var(--font-display);
   font-size: clamp(2.1rem, 1.2rem + 2.6vw, 3.6rem);
-  line-height: 1.05;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -0.03em;
 }
 .dm-intro { opacity: clamp(0, 1 - var(--p) * 2.2, 1); translate: 0 calc(var(--p) * -40px); }
 @keyframes nudge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
