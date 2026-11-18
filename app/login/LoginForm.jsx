@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { loginSchema } from '@storekit/validation';
+import { loginSchema } from '@storeflick/validation';
 
 const CREDENTIALS_SCHEMA = loginSchema.pick({ identifier: true, password: true });
 

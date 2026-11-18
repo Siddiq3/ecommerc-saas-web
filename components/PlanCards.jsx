@@ -3,7 +3,7 @@
 import {
   BILLING_PLANS, COMPARISON_ROWS, TRIAL_DAYS,
   priceFor, formatMoney, describePlanValue,
-} from '@storekit/shared';
+} from '@storeflick/shared';
 import { PlanFeatureList, Tick as Check, Cross } from './PlanFeatureList.jsx';
 
 export function PlanCards() {

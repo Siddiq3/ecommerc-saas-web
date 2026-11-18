@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers';
 import { randomUUID } from 'node:crypto';
-import { planSelectionSchema } from '@storekit/validation';
+import { planSelectionSchema } from '@storeflick/validation';
 import { callBackend, toRouteError, SESSION_COOKIE } from '../../../../lib/backend.js';
 import { readJson } from '../../../../lib/validate.js';
 

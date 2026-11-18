@@ -1,4 +1,4 @@
-import { storeHostname } from '@storekit/shared';
+import { storeHostname } from '@storeflick/shared';
 import { PriceText } from './PriceText.jsx';
 import { SITE } from '../lib/site.js';
 

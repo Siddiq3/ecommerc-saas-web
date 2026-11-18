@@ -1,5 +1,5 @@
 import { cookies } from 'next/headers';
-import { loginSchema } from '@storekit/validation';
+import { loginSchema } from '@storeflick/validation';
 import {
   callBackend, toRouteError, clientIpFromRequest, SESSION_COOKIE, sessionCookieOptions,
 } from '../../../../lib/backend.js';

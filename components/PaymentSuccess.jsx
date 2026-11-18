@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { getBillingPlan } from '@storekit/shared';
+import { getBillingPlan } from '@storeflick/shared';
 
 /**
  * Confirmation screen.

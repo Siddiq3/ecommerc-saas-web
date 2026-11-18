@@ -1,6 +1,6 @@
 import { PaymentSuccess } from '../../components/PaymentSuccess.jsx';
 import { Logo } from '../../components/Logo.jsx';
-import { paidPlanIdSchema } from '@storekit/validation';
+import { paidPlanIdSchema } from '@storeflick/validation';
 import { appDeepLink } from '../../lib/site.js';
 
 export const metadata = {

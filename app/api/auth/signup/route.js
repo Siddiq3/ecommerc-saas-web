@@ -1,4 +1,4 @@
-import { signupSchema } from '@storekit/validation';
+import { signupSchema } from '@storeflick/validation';
 import { callBackend, toRouteError, clientIpFromRequest } from '../../../../lib/backend.js';
 import { readJson } from '../../../../lib/validate.js';
 

@@ -1,5 +1,5 @@
 import { cookies } from 'next/headers';
-import { redeemHandoffSchema } from '@storekit/validation';
+import { redeemHandoffSchema } from '@storeflick/validation';
 import {
   callBackend, toRouteError, clientIpFromRequest, ACCOUNT_COOKIE, sessionCookieOptions,
 } from '../../../../../lib/backend.js';

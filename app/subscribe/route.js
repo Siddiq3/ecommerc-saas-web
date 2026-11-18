@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
-import { BILLING_PLANS } from '@storekit/shared';
+import { BILLING_PLANS } from '@storeflick/shared';
 import { callBackend, SESSION_COOKIE, toRouteError } from '../../lib/backend.js';
 
 export async function GET(request) {

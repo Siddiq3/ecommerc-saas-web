@@ -1,4 +1,4 @@
-import { TRIAL_DAYS } from '@storekit/shared';
+import { TRIAL_DAYS } from '@storeflick/shared';
 import { LegalPage, LegalSection } from '../../../components/LegalPage.jsx';
 import { SITE } from '../../../lib/site.js';
 

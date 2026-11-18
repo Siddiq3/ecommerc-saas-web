@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { BILLING_PLANS, TRIAL_DAYS, formatMoney } from '@storekit/shared';
+import { BILLING_PLANS, TRIAL_DAYS, formatMoney } from '@storeflick/shared';
 import { SiteHeader } from '../components/SiteHeader.jsx';
 import { SiteFooter } from '../components/SiteFooter.jsx';
 import { PlanFeatureList } from '../components/PlanFeatureList.jsx';

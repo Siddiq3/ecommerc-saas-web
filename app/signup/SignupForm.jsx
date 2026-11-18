@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { TRIAL_DAYS } from '@storekit/shared';
-import { signupSchema } from '@storekit/validation';
+import { TRIAL_DAYS } from '@storeflick/shared';
+import { signupSchema } from '@storeflick/validation';
 
 /** First message per field, in the same shape the field inputs below expect. */
 const fieldErrorsFrom = (issues) => {

@@ -1,5 +1,5 @@
 import { cookies } from 'next/headers';
-import { accountDeletionRequestSchema } from '@storekit/validation';
+import { accountDeletionRequestSchema } from '@storeflick/validation';
 import { callBackend, toRouteError, ACCOUNT_COOKIE } from '../../../../../lib/backend.js';
 import { readJson } from '../../../../../lib/validate.js';
 

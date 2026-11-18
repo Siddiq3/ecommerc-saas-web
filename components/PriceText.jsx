@@ -1,4 +1,4 @@
-import { formatMoney } from '@storekit/shared';
+import { formatMoney } from '@storeflick/shared';
 
 /** Money is integer paise everywhere in this system; format only at the edge. */
 export function PriceText({ paise, className = '' }) {

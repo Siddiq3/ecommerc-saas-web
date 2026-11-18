@@ -1,5 +1,5 @@
 {
-  "name": "@storekit/web",
+  "name": "@storeflick/web",
   "version": "1.0.0",
   "private": true,
   "workspaces": ["packages/*"],
@@ -10,8 +10,8 @@
     "lint": "eslint app components lib"
   },
   "dependencies": {
-    "@storekit/shared": "*",
-    "@storekit/validation": "*",
+    "@storeflick/shared": "*",
+    "@storeflick/validation": "*",
     "next": "^15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

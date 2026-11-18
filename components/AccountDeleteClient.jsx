@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { handoffCode, accountDeletionRequestSchema, DELETION_REASONS } from '@storekit/validation';
+import { handoffCode, accountDeletionRequestSchema, DELETION_REASONS } from '@storeflick/validation';
 
 /**
  * The account-deletion form.

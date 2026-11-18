@@ -1,4 +1,4 @@
-import { adminLeadSchema } from '@storekit/validation';
+import { adminLeadSchema } from '@storeflick/validation';
 import { toRouteError } from '../../../../../../lib/backend.js';
 import { readJson } from '../../../../../../lib/validate.js';
 import { adminCall } from '../../../../../../lib/admin.js';

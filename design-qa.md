@@ -8,9 +8,9 @@ Desktop cards were compared with the reference. Mobile rendering and interaction
 
 The existing marketing page now uses the reference's Plus Jakarta Sans headings, Bricolage Grotesque desktop card titles, IBM Plex Sans descriptions and Inter controls. Measured source values were used for the 1280px container, 40px outer corners, 32px white panels, 45/55 desktop split, 660px panel height, 60/75px padding, coloured backgrounds, rotated badges and carousel controls. Mobile uses a video above a white text panel with expandable details.
 
-Desktop orders use the reference's media-above-three-columns arrangement. Desktop payments use its media-left and selectable-description-cards-right arrangement. A fifth group covers additional StoreKit features.
+Desktop orders use the reference's media-above-three-columns arrangement. Desktop payments use its media-left and selectable-description-cards-right arrangement. A fifth group covers additional StoreFlick features.
 
-Intentional content differences: StoreKit branding, SS Mensware store callout, real StoreKit recordings and descriptions of supported features replace Xpress branding, merchant testimonials and Xpress-only capabilities. Actual app recordings have different screen proportions and content. This is not a pixel-identical copy of the entire reference website.
+Intentional content differences: StoreFlick branding, SS Mensware store callout, real StoreFlick recordings and descriptions of supported features replace Xpress branding, merchant testimonials and Xpress-only capabilities. Actual app recordings have different screen proportions and content. This is not a pixel-identical copy of the entire reference website.
 
 ## Evidence
 

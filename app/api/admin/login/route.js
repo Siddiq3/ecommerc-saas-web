@@ -1,4 +1,4 @@
-import { loginSchema } from '@storekit/validation';
+import { loginSchema } from '@storeflick/validation';
 import { callBackend, toRouteError, clientIpFromRequest } from '../../../../lib/backend.js';
 import { readJson } from '../../../../lib/validate.js';
 import { saveAdminTokens } from '../../../../lib/admin.js';

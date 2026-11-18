@@ -30,7 +30,7 @@ jobs:
 
       # ci, not install: builds exactly the lockfile, so CI cannot silently test a
       # different dependency tree than the one that ships. Run from the repository root,
-      # which is the workspace root for the @storekit/shared and @storekit/validation
+      # which is the workspace root for the @storeflick/shared and @storeflick/validation
       # packages this app imports.
       - name: Install dependencies
         run: npm ci

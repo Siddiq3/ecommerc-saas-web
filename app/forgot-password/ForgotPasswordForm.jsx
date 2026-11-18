@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { forgotPasswordSchema, resetPasswordSchema } from '@storekit/validation';
+import { forgotPasswordSchema, resetPasswordSchema } from '@storeflick/validation';
 
 const fieldErrorsFrom = (issues) => {
   const errors = {};

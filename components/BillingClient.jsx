@@ -5,9 +5,9 @@ import { useRouter } from 'next/navigation';
 import {
   BILLING_PLANS, TRIAL_DAYS, PLAN_STATUS_LABELS,
   priceFor, formatMoney,
-} from '@storekit/shared';
+} from '@storeflick/shared';
 import { Logo } from './Logo.jsx';
-import { handoffCode, confirmCheckoutSchema, planSelectionSchema } from '@storekit/validation';
+import { handoffCode, confirmCheckoutSchema, planSelectionSchema } from '@storeflick/validation';
 import { openCheckout } from '../lib/cashfree.js';
 import { PlanFeatureList } from './PlanFeatureList.jsx';
 
