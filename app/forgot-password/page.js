@@ -3,7 +3,7 @@ import { ForgotPasswordForm } from './ForgotPasswordForm.jsx';
 
 export const metadata = {
   title: 'Reset password',
-  description: 'Reset your StoreKit account password using an email verification code.',
+  description: 'Reset your StoreFlick account password using an email verification code.',
   robots: { index: false, follow: false },
 };
 

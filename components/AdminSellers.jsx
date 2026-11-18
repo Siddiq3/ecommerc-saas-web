@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-/** Seller tracking for the StoreKit team: who signed up, trial/plan state, and call notes. */
+/** Seller tracking for the StoreFlick team: who signed up, trial/plan state, and call notes. */
 
 const PLAN = {
   trial_active: ['Trial', 'bg-blue-50 text-blue-700'],
@@ -145,7 +145,7 @@ function Row({ s, onEdit }) {
   const [planLabel, planClass] = PLAN[s.planStatus] ?? [s.planStatus, 'bg-slate-100 text-slate-600'];
   const phone = digits(s.phone);
   const due = s.lead.followUpAt && s.lead.followUpAt <= localDate();
-  const hello = encodeURIComponent(`Hi ${s.name ?? ''}, this is the StoreKit team. How is ${s.store?.name ?? 'your store'} going?`);
+  const hello = encodeURIComponent(`Hi ${s.name ?? ''}, this is the StoreFlick team. How is ${s.store?.name ?? 'your store'} going?`);
   return (
     <tr className="border-b border-line align-top last:border-0">
       <td className="px-4 py-3">

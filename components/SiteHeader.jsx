@@ -11,7 +11,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-line/70 bg-white/85 backdrop-blur-md">
       <div className="shell flex h-16 items-center justify-between gap-6">
-        <Link href="/" aria-label="StoreKit home">
+        <Link href="/" aria-label="StoreFlick home">
           <Logo />
         </Link>
 

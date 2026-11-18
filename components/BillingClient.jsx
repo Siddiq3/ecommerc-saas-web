@@ -245,7 +245,7 @@ export function BillingClient({ deepLink }) {
             Billing links are single-use and expire after a couple of minutes, which keeps your account
             safe if a link is ever shared.
           </p>
-          <p className="mt-3">Open the StoreKit app and tap Upgrade again to get a fresh link.</p>
+          <p className="mt-3">Open the StoreFlick app and tap Upgrade again to get a fresh link.</p>
         </Notice>
         <a href={deepLink} className="btn-secondary mt-5 w-full">
           Return to the app

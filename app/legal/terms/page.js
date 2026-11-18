@@ -10,9 +10,9 @@ export const metadata = {
 export default function TermsPage() {
   return (
     <LegalPage title="Terms of service" updated="30 September 2026">
-      <LegalSection title="What StoreKit is">
+      <LegalSection title="What StoreFlick is">
         <p>
-          StoreKit is a mobile app and storefront that lets a shop owner ("you", "the merchant")
+          StoreFlick is a mobile app and storefront that lets a shop owner ("you", "the merchant")
           publish a catalogue of products, take orders from customers by cash on delivery or UPI,
           and manage stock, coupons and delivery rules. This site handles account billing for the
           app; the app itself is where you run your store.
@@ -37,7 +37,7 @@ export default function TermsPage() {
 
       <LegalSection title="Orders and payments to you">
         <p>
-          Your customers pay you directly by cash on delivery or UPI. StoreKit is not a party to
+          Your customers pay you directly by cash on delivery or UPI. StoreFlick is not a party to
           that payment, never holds your customers&rsquo; money, and takes no commission on your
           sales. You are responsible for fulfilling orders, for the accuracy of your product
           listings and stock, and for any tax or regulatory obligations that come with selling

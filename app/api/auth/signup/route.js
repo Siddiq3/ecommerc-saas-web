@@ -3,7 +3,7 @@ import { callBackend, toRouteError, clientIpFromRequest } from '../../../../lib/
 import { readJson } from '../../../../lib/validate.js';
 
 /**
- * Creates a StoreKit account from the website — the only place accounts are created; the
+ * Creates a StoreFlick account from the website — the only place accounts are created; the
  * Android app only signs in.
  *
  * The API answers a sign-up with a signed-in session, exactly as it answers a sign-in.

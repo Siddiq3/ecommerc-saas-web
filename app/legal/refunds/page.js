@@ -10,9 +10,9 @@ export const metadata = {
 export default function RefundsPage() {
   return (
     <LegalPage title="Refund policy" updated="23 September 2026">
-      <LegalSection title="This covers your StoreKit subscription">
+      <LegalSection title="This covers your StoreFlick subscription">
         <p>
-          This is about what you pay StoreKit for your subscription. It has nothing to do with
+          This is about what you pay StoreFlick for your subscription. It has nothing to do with
           what your customers pay you — that is cash on delivery or UPI, paid directly to you,
           and any refund to a customer is between you and them.
         </p>

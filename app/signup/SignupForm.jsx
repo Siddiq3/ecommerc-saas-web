@@ -78,7 +78,7 @@ export function SignupForm({ appBadges }) {
       <div className="card w-full max-w-md p-8 text-center">
         <h1 className="text-2xl font-bold text-ink-900">Your account is ready</h1>
         <p className="mt-3 text-sm leading-relaxed text-ink-600">
-          Open the StoreKit app and sign in with <span className="font-medium text-ink-900">{createdFor}</span> to set up
+          Open the StoreFlick app and sign in with <span className="font-medium text-ink-900">{createdFor}</span> to set up
           your store. Your {TRIAL_DAYS}-day free trial starts when your store is created.
         </p>
         {appBadges}
@@ -135,7 +135,7 @@ export function SignupForm({ appBadges }) {
           {busy ? 'Creating your account…' : 'Create account'}
         </button>
         <p className="text-center text-sm text-ink-500">
-          Already have an account? Sign in in the StoreKit app.
+          Already have an account? Sign in in the StoreFlick app.
         </p>
       </form>
     </div>

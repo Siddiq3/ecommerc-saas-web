@@ -68,7 +68,7 @@ export function LoginForm() {
       <p className="eyebrow">Billing</p>
       <h1 className="mt-2 text-2xl font-bold text-ink-900">Sign in</h1>
       <p className="mt-1.5 text-sm text-ink-500">
-        Use the same email or mobile number and password as the StoreKit app.
+        Use the same email or mobile number and password as the StoreFlick app.
       </p>
 
       {failure && (

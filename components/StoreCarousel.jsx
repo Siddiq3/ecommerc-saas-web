@@ -147,7 +147,7 @@ export function StoreCarousel() {
         onPointerUp={endDrag}
         onPointerCancel={endDrag}
         role="region"
-        aria-label="Example stores built with StoreKit"
+        aria-label="Example stores built with StoreFlick"
       >
         {STORES.map((store) => (
           <StoreCard key={store.store} store={store} />

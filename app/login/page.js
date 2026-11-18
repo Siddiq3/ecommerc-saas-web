@@ -4,7 +4,7 @@ import { Logo } from '../../components/Logo.jsx';
 
 export const metadata = {
   title: 'Sign in',
-  description: 'Sign in to manage your StoreKit subscription and billing.',
+  description: 'Sign in to manage your StoreFlick subscription and billing.',
   robots: { index: false, follow: false },
 };
 

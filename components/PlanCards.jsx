@@ -57,7 +57,7 @@ export function PlanCards() {
 
         <div className="mt-10 overflow-x-auto">
           <table className="w-full min-w-[640px] border-collapse text-left">
-            <caption className="sr-only">Feature comparison across StoreKit plans</caption>
+            <caption className="sr-only">Feature comparison across StoreFlick plans</caption>
             <thead>
               <tr className="border-b border-line-strong">
                 <th scope="col" className="py-4 pr-4 text-sm font-semibold text-ink-900">

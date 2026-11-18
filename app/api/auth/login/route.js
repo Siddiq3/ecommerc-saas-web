@@ -32,7 +32,7 @@ export async function POST(request) {
           success: false,
           error: {
             code: 'NO_STORE',
-            message: 'Your account has no store yet. Finish setting it up in the StoreKit app, then come back here to manage billing.',
+            message: 'Your account has no store yet. Finish setting it up in the StoreFlick app, then come back here to manage billing.',
           },
         },
         { status: 409 },

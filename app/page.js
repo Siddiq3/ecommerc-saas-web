@@ -11,6 +11,8 @@ import { Faq } from '../components/Faq.jsx';
 import { FeatureWalkthrough } from '../components/FeatureWalkthrough.jsx';
 import { ScrollStage } from '../components/ScrollStage.jsx';
 import { Logo } from '../components/Logo.jsx';
+import { IntroSplash } from '../components/IntroSplash.jsx';
+import { INTRO_SKIP_SCRIPT } from '../lib/intro.js';
 import { demoStoreUrl } from '../lib/site.js';
 
 /**
@@ -91,11 +93,11 @@ const HOME_FAQ = [
   },
   {
     q: 'How do my customers pay me?',
-    a: 'Cash on delivery and UPI, and they pay you directly. StoreKit never sits between you and your money, and takes no cut of your sales.',
+    a: 'Cash on delivery and UPI, and they pay you directly. StoreFlick never sits between you and your money, and takes no cut of your sales.',
   },
   {
     q: 'Do I need a website or a domain?',
-    a: 'No. Your store gets its own StoreKit link the moment you create it. If you want your own domain, the Business and Pro plans let you connect one.',
+    a: 'No. Your store gets its own StoreFlick link the moment you create it. If you want your own domain, the Business and Pro plans let you connect one.',
   },
   {
     q: 'What if I already sell on WhatsApp and Instagram?',
@@ -112,6 +114,8 @@ export default function LandingPage() {
 
   return (
     <>
+      <script dangerouslySetInnerHTML={{ __html: INTRO_SKIP_SCRIPT }} />
+      <IntroSplash />
       <Reveal />
       <SiteHeader />
 
@@ -165,7 +169,7 @@ export default function LandingPage() {
             <div className="order-2 flex justify-center lg:order-1">
               <div className="relative">
                 <div className="phone -rotate-[8deg]">
-                  <img src="/media/ss-menswear/home.jpg" alt="The StoreKit app: today's sales and new orders for SS Mensware" width="540" height="1200" />
+                  <img src="/media/ss-menswear/home.jpg" alt="The StoreFlick app: today's sales and new orders for SS Mensware" width="540" height="1200" />
                 </div>
                 <span aria-hidden="true" className="absolute -bottom-10 left-1/2 h-10 w-[130%] -translate-x-1/2 rounded-[100%] bg-black/15 blur-xl" />
                 {TOASTS.map((toast, index) => (
@@ -182,7 +186,7 @@ export default function LandingPage() {
 
             <div className="order-1 text-center lg:order-2">
               <h1 data-reveal className="display-1">
-                meet <span className="whitespace-nowrap italic text-accent-600">StoreKit</span>
+                meet <span className="whitespace-nowrap italic text-accent-600">StoreFlick</span>
                 <br />
                 your online store
               </h1>
@@ -227,7 +231,7 @@ export default function LandingPage() {
           </svg>
 
           <h2 id="wheel-heading" className="display-2 relative mx-auto max-w-2xl px-5 pt-20 text-center sm:pt-24">
-            what can <span className="italic text-accent-600">StoreKit</span> do for my shop?
+            what can <span className="italic text-accent-600">StoreFlick</span> do for my shop?
           </h2>
 
           <ul className="wheel">

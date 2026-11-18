@@ -143,7 +143,7 @@ export function AccountDeleteClient({ deepLink, supportEmail }) {
       <div className="mx-auto max-w-md py-16">
         <Notice title={error?.message ?? 'This link is no longer valid.'}>
           <p>These links are single-use and expire after a couple of minutes, which is what keeps your account safe if one is ever shared.</p>
-          <p className="mt-3">Open the StoreKit app, go to Account and tap Delete account: current versions of the app delete it there, straight away.</p>
+          <p className="mt-3">Open the StoreFlick app, go to Account and tap Delete account: current versions of the app delete it there, straight away.</p>
           <p className="mt-3">
             Cannot get into the app? Email <a className="underline" href={`mailto:${supportEmail}`}>{supportEmail}</a> from
             the address on your account and we will handle it there.
