@@ -27,7 +27,7 @@ export function SiteFooter() {
   return (
     <footer className="relative overflow-hidden border-t border-line bg-surface">
       <span aria-hidden="true" className="pointer-events-none absolute -bottom-[0.28em] right-0 select-none font-display text-[clamp(7rem,24vw,22rem)] font-semibold italic leading-none text-ink-900/[0.035]">
-        storeflick
+        StoreFlick
       </span>
       <WhatsAppButton />
       <div className="shell grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">

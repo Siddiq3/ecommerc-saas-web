@@ -12,6 +12,7 @@ import { FeatureWalkthrough } from '../components/FeatureWalkthrough.jsx';
 import { ScrollStage } from '../components/ScrollStage.jsx';
 import { Logo } from '../components/Logo.jsx';
 import { IntroSplash } from '../components/IntroSplash.jsx';
+import { BrandName } from '../components/BrandName.jsx';
 import { INTRO_SKIP_SCRIPT } from '../lib/intro.js';
 import { demoStoreUrl } from '../lib/site.js';
 
@@ -51,18 +52,18 @@ const TOASTS = [
   { icon: '🚚', title: 'Order shipped', sub: 'to Pune · arriving Friday', pos: '-left-16 bottom-[16%] sm:-left-32' },
 ];
 
-const MARQUEE = ['boutiques', 'home bakers', 'jewellery', 'thrift stores', 'plant shops', 'handmade', 'menswear', 'cosmetics', 'perfumes', 'home decor'];
+const MARQUEE = ['Boutiques', 'Home bakers', 'Jewellery', 'Kirana stores', 'Thrift stores', 'Plant shops', 'Handmade', 'Menswear', 'Cosmetics', 'Perfumes', 'Home decor'];
 
 // What the app actually does, one card per area (mirrors the merchant app's screens).
 const FEATURES = [
-  { title: 'products & stock', emoji: '📦', items: ['sizes & colours', 'stock per size', 'categories'], b: ORANGE },
-  { title: 'orders', emoji: '🧾', items: ['address & items attached', 'status updates', 'customer history'], b: RUST },
-  { title: 'payments', emoji: '💸', items: ['UPI', 'cash on delivery', '0% commission'], b: AMBER },
-  { title: 'your storefront', emoji: '🛍️', items: ['one link to share', 'ready-made designs', 'custom domain'], b: INK },
-  { title: 'delivery', emoji: '🚚', items: ['delivery charges', 'free-delivery threshold', 'pincodes you serve'], b: ORANGE },
-  { title: 'grow sales', emoji: '📈', items: ['discount coupons', 'sales analytics', 'best sellers'], b: RUST },
-  { title: 'khata & day book', emoji: '📒', items: ['who owes you', 'daily cash book', 'bills & expenses'], b: AMBER },
-  { title: 'staff attendance', emoji: '🧑‍🔧', items: ['one-tap daily register', 'salary worked out', 'pay from the day book'], b: INK },
+  { title: 'Products & stock', emoji: '📦', items: ['sizes & colours', 'stock per size', 'categories'], b: ORANGE },
+  { title: 'Orders', emoji: '🧾', items: ['address & items attached', 'status updates', 'customer history'], b: RUST },
+  { title: 'Payments', emoji: '💸', items: ['UPI', 'cash on delivery', '0% commission'], b: AMBER },
+  { title: 'Your online store', emoji: '🛍️', items: ['one link to share', 'ready-made designs', 'custom domain'], b: INK },
+  { title: 'Delivery', emoji: '🚚', items: ['delivery charges', 'free-delivery threshold', 'pincodes you serve'], b: ORANGE },
+  { title: 'Grow sales', emoji: '📈', items: ['discount coupons', 'sales analytics', 'best sellers'], b: RUST },
+  { title: 'Khata & day book', emoji: '📒', items: ['who owes you', 'daily cash book', 'bills & expenses'], b: AMBER },
+  { title: 'Staff attendance', emoji: '🧑‍🔧', items: ['one-tap daily register', 'salary worked out', 'pay from the day book'], b: INK },
 ];
 
 const TESTIMONIALS = [
@@ -134,13 +135,13 @@ export default function LandingPage() {
 
           <div className="dm-intro relative px-5 pt-[10vh] text-center sm:pt-[12vh]">
             <h2 id="dm-heading" className="dm-heading mx-auto max-w-4xl">
-              Start your online store selling from{' '}
+              Start your online store from{' '}
               <span className="whitespace-nowrap italic text-accent-600">
                 {formatMoney(cheapest.monthlyPaise)}<span aria-hidden="true" className="emoji not-italic">😮</span>
               </span>
             </h2>
             <p className="serif-italic mt-3 text-xl font-semibold text-ink-700 sm:text-2xl">
-              turn these DMs into orders <span aria-hidden="true" className="dm-scroll inline-block not-italic text-accent-600">↓</span>
+              Turn these DMs into real orders <span aria-hidden="true" className="dm-scroll inline-block not-italic text-accent-600">↓</span>
             </p>
           </div>
 
@@ -186,18 +187,19 @@ export default function LandingPage() {
 
             <div className="order-1 text-center lg:order-2">
               <h1 data-reveal className="display-1">
-                meet <span className="whitespace-nowrap italic text-accent-600">StoreFlick</span>
+                Meet <BrandName />
                 <br />
-                your online store
+                <span className="text-[0.62em] leading-tight">your shop, online in 60 seconds</span>
               </h1>
               <p data-reveal className="mx-auto mt-5 max-w-md text-lg leading-relaxed text-ink-600">
-                Every DM becomes an order — with the size, address and payment already on it.
+                <span className="block font-semibold tracking-wide text-ink-900">Create. Manage. Grow instantly.</span>
+                No agency, no coding. Every order arrives with the size, address and payment already on it.
                 From {formatMoney(cheapest.monthlyPaise)} a month.
               </p>
               <div data-reveal className="mt-8 flex flex-col items-center gap-4">
-                <Link href="/signup" className="btn-primary btn-lg px-12">start free</Link>
+                <Link href="/signup" className="btn-primary btn-lg px-12">Start free</Link>
                 <p className="serif-italic text-lg font-semibold text-accent-600">
-                  for shops that sell on WhatsApp &amp; Instagram
+                  For every local shop that sells on WhatsApp &amp; Instagram
                 </p>
                 <AppBadges className="mt-2" />
                 <p className="text-sm text-ink-500">
@@ -231,7 +233,7 @@ export default function LandingPage() {
           </svg>
 
           <h2 id="wheel-heading" className="display-2 relative mx-auto max-w-2xl px-5 pt-20 text-center sm:pt-24">
-            what can <span className="italic text-accent-600">StoreFlick</span> do for my shop?
+            What can <BrandName /> do for your shop?
           </h2>
 
           <ul className="wheel">
@@ -263,7 +265,7 @@ export default function LandingPage() {
         <section className="overflow-hidden bg-canvas py-20 sm:py-24">
           <div className="shell">
             <div data-reveal className="mx-auto max-w-2xl text-center">
-              <h2 className="display-2">this is what <span className="italic text-accent-600">yours</span> will look like</h2>
+              <h2 className="display-2">This is what <span className="italic text-accent-600">your store</span> will look like</h2>
               <p className="mt-5 text-lg leading-relaxed text-ink-600">Whatever you sell, the store is built for it. Drag to look around.</p>
             </div>
           </div>
@@ -294,7 +296,7 @@ export default function LandingPage() {
               </figure>
             ))}
             <h2 data-reveal className="display-2 order-first text-center italic text-white lg:order-none lg:col-start-2 lg:row-start-1">
-              made with sellers like you
+              Made with sellers like you
             </h2>
           </div>
           <p data-reveal className="shell relative mt-12 text-center text-xs text-white/60">
@@ -306,7 +308,7 @@ export default function LandingPage() {
         <section id="pricing" className="paper-grid scroll-mt-24 py-24 sm:py-32">
           <div className="shell">
             <div data-reveal className="mx-auto max-w-2xl text-center">
-              <h2 className="display-2">pick a plan when you are <span className="italic text-accent-600">ready</span></h2>
+              <h2 className="display-2">Pick a plan when you’re <span className="italic text-accent-600">ready</span></h2>
               <p className="mt-5 text-lg leading-relaxed text-ink-600">Every plan starts with {TRIAL_DAYS} days free. No card until you decide to stay.</p>
             </div>
 
@@ -336,7 +338,7 @@ export default function LandingPage() {
         {/* ───────────── 7. Questions ───────────── */}
         <section className="paper-grid pb-24 sm:pb-32">
           <div className="mx-auto max-w-5xl bg-amber px-6 py-16 sm:px-14 sm:py-20">
-            <h2 data-reveal className="display-2 text-center">frequently asked <span className="italic">questions</span></h2>
+            <h2 data-reveal className="display-2 text-center">Frequently asked <span className="italic">questions</span></h2>
             <Faq items={HOME_FAQ} />
           </div>
         </section>
@@ -346,10 +348,10 @@ export default function LandingPage() {
           <div className="shell">
             <div data-reveal className="rounded-xl bg-accent-600 px-6 py-20 text-center sm:py-24">
               <p className="mx-auto max-w-md text-2xl font-medium leading-snug text-white sm:text-3xl">
-                the best sellers you know stopped taking orders in DMs
+                The best sellers you know stopped taking orders in DMs.
               </p>
-              <p className="mt-5 font-display text-4xl font-semibold text-white sm:text-5xl">now <span className="italic">you</span> can too!</p>
-              <Link href="/signup" className="btn-primary btn-lg mt-9 bg-ink-900 px-12 shadow-float hover:bg-ink-700">start free</Link>
+              <p className="mt-5 font-display text-4xl font-extrabold text-white sm:text-5xl">Now <span className="italic">you</span> can too.</p>
+              <Link href="/signup" className="btn-primary btn-lg mt-9 bg-ink-900 px-12 shadow-float hover:bg-ink-700">Start free with StoreFlick</Link>
             </div>
           </div>
         </section>

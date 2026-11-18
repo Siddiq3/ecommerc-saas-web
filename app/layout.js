@@ -1,13 +1,14 @@
-import { Fraunces, Plus_Jakarta_Sans } from 'next/font/google';
+import { Plus_Jakarta_Sans, Urbanist } from 'next/font/google';
 import './globals.css';
 import { SITE, siteUrl, clientSiteConfig } from '../lib/site.js';
 import { SiteConfigProvider } from '../components/SiteConfig.jsx';
 
-/** Fraunces (with italics) carries headlines; Plus Jakarta Sans carries body copy. */
-const display = Fraunces({
+/** Urbanist carries headlines (the same face as the StoreFlick app); Plus Jakarta Sans carries body copy. */
+const display = Urbanist({
   subsets: ['latin'],
+  weight: ['600', '700', '800'],
   style: ['normal', 'italic'],
-  variable: '--font-fraunces',
+  variable: '--font-urbanist',
   display: 'swap',
 });
 
