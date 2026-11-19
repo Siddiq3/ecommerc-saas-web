@@ -901,7 +901,7 @@
 
 /* ───────────── StoreFlick opening intro (components/IntroSplash.jsx) ─────────────
    Timeline (s): mark lands 0.2–1.3 · ring 0.8 · sheen 1.3 · spark 1.5 · STOREFLICK 1.7–2.7 · tagline 2.5–3.4 ·
-   full logo holds until the curtain lifts at 4.6 (IntroSplash.jsx), over 1s. Keep the bar ending at 4.6. */
+   a short beat on the full logo, then the curtain lifts at 3.9 (IntroSplash.jsx), over 0.85s. Keep the bar ending at 3.9. */
 .sf-intro {
   position: fixed;
   inset: 0;
@@ -911,7 +911,7 @@
   background: #ffffff;
   overflow: hidden;
   cursor: pointer;
-  transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1), border-radius 1s cubic-bezier(0.76, 0, 0.24, 1);
+  transition: transform 0.85s cubic-bezier(0.76, 0, 0.24, 1), border-radius 0.85s cubic-bezier(0.76, 0, 0.24, 1);
 }
 .sf-intro-skip .sf-intro { display: none; }
 html:has(.sf-intro:not(.sf-intro-leave)) body { overflow: hidden; }
@@ -935,7 +935,7 @@ html:has(.sf-intro:not(.sf-intro-leave)) body { overflow: hidden; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.7s ease;
+  transition: transform 0.7s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.6s ease;
 }
 
 .sf-intro-mark {
@@ -1015,7 +1015,7 @@ html:has(.sf-intro:not(.sf-intro-leave)) body { overflow: hidden; }
   border-radius: inherit;
   background: linear-gradient(90deg, #ffb21e, #ff6a00);
   transform-origin: left;
-  animation: sf-bar 4.4s cubic-bezier(0.45, 0, 0.2, 1) 0.2s both;
+  animation: sf-bar 3.7s cubic-bezier(0.45, 0, 0.2, 1) 0.2s both;
 }
 
 @keyframes sf-glow { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
