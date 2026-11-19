@@ -795,7 +795,8 @@
   overflow: hidden;
   box-shadow: 0 30px 60px -20px rgb(0 0 0 / 0.35), inset 0 0 0 1px #333;
 }
-.phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 34px; }
+/* Only the screenshot that IS the screen fills it; a logo or icon inside a phone keeps its own size. */
+.phone > img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 34px; }
 .phone::before {
   content: '';
   position: absolute;
@@ -858,7 +859,9 @@
   .wheel-phone { width: 150px; top: 60vh; border-width: 7px; border-radius: 30px; }
   .wheel-phone > div { border-radius: 23px; }
   .wheel-phone .rounded-lg { font-size: 0.6rem; padding: 0.35rem 0.6rem; margin-top: 0.9rem; }
-  .wheel-phone svg { width: 22px; height: 22px; }
+  /* The StoreFlick logo (mark + wordmark) sized to the 150px phone. */
+  .wheel-phone img { height: 22px; }
+  .wheel-phone img + img { height: 12px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
