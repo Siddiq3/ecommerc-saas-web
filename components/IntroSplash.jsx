@@ -28,10 +28,11 @@ export function IntroSplash() {
       if (leaving) return;
       leaving = true;
       setPhase('leave');
-      timers.push(setTimeout(() => setPhase('gone'), reduced ? 250 : 800));
+      timers.push(setTimeout(() => setPhase('gone'), reduced ? 250 : 1050));
     };
 
-    timers.push(setTimeout(leave, reduced ? 900 : 2700));
+    // The finished logo holds for about a second (tagline done at 3.4s) before the curtain lifts.
+    timers.push(setTimeout(leave, reduced ? 900 : 4600));
     window.addEventListener('pointerdown', leave, { once: true });
     window.addEventListener('keydown', leave, { once: true });
     return () => {
