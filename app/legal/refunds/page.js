@@ -3,13 +3,13 @@ import { LegalPage, LegalSection } from '../../../components/LegalPage.jsx';
 import { SITE } from '../../../lib/site.js';
 
 export const metadata = {
-  title: 'Refund policy',
+  title: 'Refunds & cancellation policy',
   description: `How refunds work for a ${SITE.name} subscription.`,
 };
 
 export default function RefundsPage() {
   return (
-    <LegalPage title="Refund policy" updated="23 September 2026">
+    <LegalPage title="Refunds & cancellation policy" updated="23 September 2026">
       <LegalSection title="This covers your StoreFlick subscription">
         <p>
           This is about what you pay StoreFlick for your subscription. It has nothing to do with
