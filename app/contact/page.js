@@ -21,6 +21,13 @@ export default function ContactPage() {
         </p>
       </LegalSection>
 
+      <LegalSection title="Phone">
+        <p>
+          Call or WhatsApp{' '}
+          <a href="tel:+919581525613" className="font-medium text-accent-700 hover:underline">+91 95815 25613</a>.
+        </p>
+      </LegalSection>
+
       <LegalSection title="Who runs StoreFlick">
         <p>
           {SITE.name} is operated by <strong>{legal.entityName}</strong>.
