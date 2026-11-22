@@ -25,7 +25,7 @@ export default function PrivacyPage() {
   const legal = legalDetails();
 
   return (
-    <LegalPage title="Privacy policy" updated="30 September 2026">
+    <LegalPage title="Privacy policy" updated="20 November 2026">
       <LegalSection title="Who we are">
         <p>
           {SITE.name} (&ldquo;we&rdquo;) is a service for shop owners (&ldquo;merchants&rdquo;): the {SITE.name} Android
@@ -56,6 +56,31 @@ export default function PrivacyPage() {
           </li>
           <li>
             <strong>Your subscription:</strong> your plan, billing period, amounts paid and payment references.
+          </li>
+          <li>
+            <strong>Bill book, khata and staff register</strong> (if you use them): the bills, expenses and cash entries
+            you record; the people you track money with (name, mobile number and amounts); and your staff (name, mobile
+            number, wage and attendance). The app keeps a copy on your phone so it works offline, and syncs it to your
+            store.
+          </li>
+          <li>
+            <strong>Instagram</strong> (only if you connect it): your Instagram business account&rsquo;s name and id, an
+            access token Meta issues to us (stored encrypted), your posts&rsquo; captions and links, and the text of
+            comments people leave on them, so the automatic replies you set up can work.
+          </li>
+          <li>
+            <strong>Notifications:</strong> a push notification token for your phone, so we can tell you about new
+            orders.
+          </li>
+          <li>
+            <strong>Photos and voice:</strong> photos you choose or take with the camera are uploaded as product and
+            store images. If you tap the microphone to type by voice, your phone&rsquo;s own speech recognition service
+            (Google on Android) turns your speech into text; we receive only the text, never the audio.
+          </li>
+          <li>
+            <strong>Service logs:</strong> our servers record each request (time, the address it came from, and any
+            error) to keep the service secure and fix problems. They are kept for 30 days. The app contains no crash
+            reporting, analytics or advertising SDK.
           </li>
         </List>
       </LegalSection>
@@ -88,12 +113,23 @@ export default function PrivacyPage() {
       <LegalSection title="Who processes it for us">
         <List>
           <li>
-            <strong>Amazon Web Services</strong> runs our API and database and sends our emails (Amazon SES), in the
-            India (Mumbai) region unless configured otherwise.
+            <strong>Amazon Web Services</strong> runs our API and database, in its India (Hyderabad) region.
           </li>
           <li>
-            <strong>Cloudflare</strong> hosts the storefronts, stores product and store images, and, where custom
-            domains are switched on, serves a merchant&rsquo;s own domain.
+            <strong>Cloudflare</strong> manages our domain, hosts the storefronts, stores product and store images, and,
+            where custom domains are switched on, serves a merchant&rsquo;s own domain.
+          </li>
+          <li>
+            <strong>Resend</strong> sends our emails, such as sign-in and password-reset codes and receipts, so it
+            receives the address and the message.
+          </li>
+          <li>
+            <strong>Google (Firebase Cloud Messaging)</strong> and <strong>Expo</strong> deliver push notifications to
+            your phone, so they receive its push token and the notification text.
+          </li>
+          <li>
+            <strong>Meta</strong> (Instagram), only if you connect an Instagram account: we read your posts and comments
+            and send the replies you set up through Meta&rsquo;s API, under Meta&rsquo;s own terms and policies.
           </li>
           <li>
             <strong>Cashfree Payments</strong> processes plan payments. To start a payment we pass it a name, your email
@@ -107,7 +143,10 @@ export default function PrivacyPage() {
             <strong>Website hosting:</strong> <Configured value={legal.websiteHost} label="provider that hosts this website" />.
           </li>
         </List>
-        <p>We share data with anyone else only where the law requires it.</p>
+        <p>
+          Some of these providers process data outside India. We share data with anyone else only where the law requires
+          it.
+        </p>
       </LegalSection>
 
       <LegalSection title="Cookies and storage on your device">
@@ -123,8 +162,9 @@ export default function PrivacyPage() {
             coupon code in session storage, on that store&rsquo;s own address. They set no cookies of their own.
           </li>
           <li>
-            <strong>The app</strong> keeps your sign-in tokens in the device&rsquo;s secure, encrypted storage, plus a
-            random install identifier. It contains no advertising or analytics SDK.
+            <strong>The app</strong> keeps your sign-in tokens in the device&rsquo;s secure, encrypted storage, a random
+            install identifier, and the offline copy of your bill book, khata and staff register. It does not use the
+            device&rsquo;s advertising ID and contains no advertising or analytics SDK.
           </li>
         </List>
       </LegalSection>
@@ -141,7 +181,8 @@ export default function PrivacyPage() {
           </li>
           <li>
             <strong>Delete your account</strong> in the app (Account → Delete account). Your account, every store you
-            solely own and all their data are erased straight away, and every device is signed out.
+            solely own and all their data (including the bill book, khata, staff register and any Instagram connection)
+            are erased straight away, every device is signed out, and the offline copy on that phone is erased too.
           </li>
           <li>
             <strong>Without the app</strong>, email <Email /> from the address on your account.
@@ -163,6 +204,14 @@ export default function PrivacyPage() {
         <p>
           Grievance officer: <Configured value={legal.grievanceOfficer} label="grievance officer name and title" />,
           reachable at <Email />.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="Children">
+        <p>
+          {SITE.name} is a business tool for shop owners and is not directed at children. You must be 18 or older to
+          create an account, and we do not knowingly collect data from anyone under 18. If you believe a child has given
+          us their data, email <Email /> and we will delete it.
         </p>
       </LegalSection>
 

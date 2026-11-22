@@ -49,6 +49,10 @@ export function AccountDeletionInfo({ supportEmail = SITE.supportEmail }) {
             <li>Every store you are the only owner of, including its link and any connected custom domain.</li>
             <li>Those stores&rsquo; products, images, categories, coupons, policies, delivery and payment settings.</li>
             <li>Their orders and customer details, notifications, analytics and change history.</li>
+            <li>
+              Their bill book, khata and staff register (including the copy the app keeps on your phone) and any connected
+              Instagram account.
+            </li>
             <li>Your signed-in sessions on every device, pending sign-in codes and any earlier deletion request.</li>
             <li>Your access to any store owned by someone else (that store and its data are theirs and stay).</li>
           </List>

@@ -9,13 +9,17 @@ export const metadata = {
 
 export default function TermsPage() {
   return (
-    <LegalPage title="Terms of service" updated="30 September 2026">
+    <LegalPage title="Terms of service" updated="20 November 2026">
       <LegalSection title="What StoreFlick is">
         <p>
           StoreFlick is a mobile app and storefront that lets a shop owner ("you", "the merchant")
           publish a catalogue of products, take orders from customers by cash on delivery or UPI,
           and manage stock, coupons and delivery rules. This site handles account billing for the
           app; the app itself is where you run your store.
+        </p>
+        <p>
+          StoreFlick is for running a business. You must be 18 or older, and able to enter a contract, to create an
+          account.
         </p>
       </LegalSection>
 
