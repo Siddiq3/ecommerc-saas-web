@@ -10,6 +10,7 @@ const PLAN = {
   subscribed: ['Paid', 'bg-green-50 text-green-700'],
   cancelled: ['Cancelled', 'bg-amber-50 text-amber-700'],
   no_store: ['No store', 'bg-slate-100 text-slate-600'],
+  books: ['Khata only', 'bg-teal-50 text-teal-700'],
 };
 const STAGES = {
   new: 'Not called', contacted: 'Called', interested: 'Interested',
@@ -27,6 +28,7 @@ const FILTERS = [
   ['expired', 'Trial ended', (s) => s.planStatus === 'trial_expired'],
   ['new', 'Not called', (s) => s.lead.stage === 'new' && s.planStatus !== 'subscribed'],
   ['nostore', 'No store', (s) => s.planStatus === 'no_store'],
+  ['books', 'Khata only', (s) => s.planStatus === 'books'],
   ['paid', 'Paid', (s) => s.planStatus === 'subscribed'],
 ];
 const digits = (p) => String(p ?? '').replace(/\D/g, '').slice(-10);
