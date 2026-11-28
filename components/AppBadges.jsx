@@ -27,6 +27,8 @@ const PlayMark = () => (
 const Badge = ({ href, mark, top, bottom }) => (
   <a
     href={href}
+    target="_blank"
+    rel="noopener noreferrer"
     className="group inline-flex items-center gap-3 rounded-md border border-white/15 bg-ink-900 px-5 py-2.5
                text-white transition-transform duration-200 hover:-translate-y-0.5"
   >
@@ -38,11 +40,31 @@ const Badge = ({ href, mark, top, bottom }) => (
   </a>
 );
 
+/** Not a link: shown while the app is not yet in that store. */
+const SoonBadge = ({ mark, bottom }) => (
+  <span
+    aria-label={`${bottom}: coming soon`}
+    className="relative inline-flex cursor-default items-center gap-3 rounded-md border border-white/10 bg-ink-900/70
+               px-5 py-2.5 text-white/60"
+  >
+    {mark}
+    <span className="text-left leading-tight">
+      <span className="block text-[10px] uppercase tracking-wide text-white/45">Coming soon on</span>
+      <span className="block font-display text-base font-bold">{bottom}</span>
+    </span>
+  </span>
+);
+
+const isRealLink = (url) => Boolean(url) && url !== '#';
+
 export function AppBadges({ className = '' }) {
+  const ios = appStoreUrl();
   return (
     <div className={`flex flex-wrap items-center justify-center gap-3 ${className}`}>
-      <Badge href={appStoreUrl()} mark={<AppleMark />} top="Download on the" bottom="App Store" />
       <Badge href={playStoreUrl()} mark={<PlayMark />} top="Get it on" bottom="Google Play" />
+      {isRealLink(ios)
+        ? <Badge href={ios} mark={<AppleMark />} top="Download on the" bottom="App Store" />
+        : <SoonBadge mark={<AppleMark />} bottom="App Store" />}
     </div>
   );
 }
